@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 12,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1741256715214,
@@ -56,6 +56,10 @@
                 {
                     "date": 1741272024920,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n         else: \n             result = progress_3_event(self.favorability)\n             \n         self.favorability += result.favor_change\n-        self.dialogue_log.record(result)\n+        self.dialogue_log.record_log_pool(result)\n         self.progress += 1\n         \n         \n                 \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1741274165106,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,8 +30,11 @@\n         elif self.progress ==2:\n             result = progress_2_event(self.favorability)\n         else: \n             result = progress_3_event(self.favorability)\n+        \n+        for line in result.reaction:\n+            print(line)\n             \n         self.favorability += result.favor_change\n         self.dialogue_log.record_log_pool(result)\n         self.progress += 1\n"
                 }
             ],
             "date": 1741256715214,

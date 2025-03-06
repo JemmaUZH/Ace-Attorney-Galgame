@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 16,
+            "activePatchIndex": 17,
             "patches": [
                 {
                     "date": 1741267682894,
@@ -72,6 +72,10 @@
                 {
                     "date": 1741273734019,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n from story_content import get_nickname\n \n class EventResult:\n-    def __init__(self, player_choice,reaction, favor_change, past_story=None, narrative=None):\n+    def __init__(self, player_choice,reaction, favor_change, past_story=None, narrative=\"\"):\n         self.player_choice = player_choice\n         self.reaction = reaction\n         self.favor_change = favor_change\n         self.past_story = past_story\n@@ -10,9 +10,9 @@\n \n \n def progress_2_event(favorability):\n     \n-    narrative = f\"\\n戈多：「无论如何，{get_nickname()}，现在你还是头疼一下你的被告人吧，我可真羡慕他，闯出这么大的祸还要你为他收拾。」\"\n+    narrative = f\"\\n戈多：「无论如何，{get_nickname(favorability)}，现在你还是头疼一下你的被告人吧，我可真羡慕他，闯出这么大的祸还要你为他收拾。」\"\n     print(narrative)\n     \n     print(\"【选项】\\n1. 他是无罪的\\n2. 这与你无关\\n3. 是啊，他真的是很麻烦\")\n     choice = input(\"输入选项编号(1-3)：\")\n"
+                },
+                {
+                    "date": 1741273997976,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n         return EventResult(\"这与你无关\", reaction, -3)\n \n     elif choice == \"3\":\n         reaction = [\n-            \"\\n你毫不犹豫地反驳：「这位先生，我不认识你。」\",\n+            \"你毫不犹豫地反驳：「这位先生，我不认识你。」\",\n             \"戈多：「哦？律师小姐，看来你贵人多忘事嘛……很好。」\"\n         ]\n         return EventResult(\"是啊，他真的是很麻烦\", reaction, +5)\n \n"
                 }
             ],
             "date": 1741267682894,

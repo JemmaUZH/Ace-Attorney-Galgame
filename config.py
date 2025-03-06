@@ -6,6 +6,7 @@ character = {
     "background": "神秘的检察官，五年前与你有一面之缘",
     "mood": "温柔中带着试探",
     "signature_move": "用温柔的语气说出最让人窒息的话"
+    
 }
 
 initial_favorability = 60

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1741202493919,
@@ -20,6 +20,18 @@
                 {
                     "date": 1741270710885,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     \"mood\": \"温柔中带着试探\",\n     \"signature_move\": \"用温柔的语气说出最让人窒息的话\"\n }\n \n-favorability = 60\n+initial_favorability = 60\n progress = 1\n \n narration_notes = [\n     \"——旁白小记：对方的微笑比黑咖啡还苦，看来今天这杯对话不会太甜。\",\n"
+                },
+                {
+                    "date": 1741273975450,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n     \"occupation\": \"检察官\",\n     \"personality\": \"温文尔雅，礼貌周到，但每句话都带着隐含的试探和压迫感\",\n     \"background\": \"神秘的检察官，五年前与你有一面之缘\",\n     \"mood\": \"温柔中带着试探\",\n-    \"signature_move\": \"用温柔的语气说出最让人窒息的话\"\n+    \"signature_move\": \"用温柔的语气说出最让人窒息的话\"/n\n }\n \n initial_favorability = 60\n progress = 1\n"
+                },
+                {
+                    "date": 1741274027244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n     \"occupation\": \"检察官\",\n     \"personality\": \"温文尔雅，礼貌周到，但每句话都带着隐含的试探和压迫感\",\n     \"background\": \"神秘的检察官，五年前与你有一面之缘\",\n     \"mood\": \"温柔中带着试探\",\n-    \"signature_move\": \"用温柔的语气说出最让人窒息的话\"/n\n+    \"signature_move\": \"用温柔的语气说出最让人窒息的话\"\\n\n }\n \n initial_favorability = 60\n progress = 1\n"
+                },
+                {
+                    "date": 1741274039597,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,10 @@\n     \"occupation\": \"检察官\",\n     \"personality\": \"温文尔雅，礼貌周到，但每句话都带着隐含的试探和压迫感\",\n     \"background\": \"神秘的检察官，五年前与你有一面之缘\",\n     \"mood\": \"温柔中带着试探\",\n-    \"signature_move\": \"用温柔的语气说出最让人窒息的话\"\\n\n+    \"signature_move\": \"用温柔的语气说出最让人窒息的话\"\n+    \n }\n \n initial_favorability = 60\n progress = 1\n"
                 }
             ],
             "date": 1741202493918,

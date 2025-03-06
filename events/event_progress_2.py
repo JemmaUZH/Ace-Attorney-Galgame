@@ -37,7 +37,7 @@ def progress_2_event(favorability):
 
     elif choice == "3":
         reaction = [
-            "\n你毫不犹豫地反驳：「这位先生，我不认识你。」",
+            "你毫不犹豫地反驳：「这位先生，我不认识你。」",
             "戈多：「哦？律师小姐，看来你贵人多忘事嘛……很好。」"
         ]
         return EventResult("是啊，他真的是很麻烦", reaction, +5)

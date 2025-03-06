@@ -31,6 +31,9 @@ class StoryManager:
             result = progress_2_event(self.favorability)
         else: 
             result = progress_3_event(self.favorability)
+        
+        for line in result.reaction:
+            print(line)
             
         self.favorability += result.favor_change
         self.dialogue_log.record_log_pool(result)
