@@ -1,3 +1,4 @@
+import random
 
 class DialogueLog:
     def __init__(self):
@@ -11,10 +12,10 @@ class DialogueLog:
             log_pool.append(f"Narrative: {result.narrative}")
             
         #2.玩家的选择和戈多的反应
-        if result.player_choice and result.godot_reaction:
+        if result.player_choice and result.reaction:
             log_pool.append(
                 f"【玩家选择】：{result.player_choice}\n"
-                f"【戈多的反应】：{result.godot_reaction}\n"
+                f"【戈多的反应】：{result.reaction}\n"
                 f"【好感度变化】：{result.favor_change:+}\n"
             )
             

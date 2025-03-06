@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1741258188096,
@@ -24,6 +24,14 @@
                 {
                     "date": 1741270943099,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n \n-Class DialogueLog:\n+class DialogueLog:\n     def __init__(self):\n         self.logs = []\n         \n     def record_log_pool(self,result):\n"
+                },
+                {
+                    "date": 1741272904582,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import random\n \n class DialogueLog:\n     def __init__(self):\n         self.logs = []\n@@ -10,12 +11,12 @@\n         if result.narrative:\n             log_pool.append(f\"Narrative: {result.narrative}\")\n             \n         #2.玩家的选择和戈多的反应\n-        if result.player_choice and result.godot_reaction:\n+        if result.player_choice and resultreaction:\n             log_pool.append(\n                 f\"【玩家选择】：{result.player_choice}\\n\"\n-                f\"【戈多的反应】：{result.godot_reaction}\\n\"\n+                f\"【戈多的反应】：{result.reaction}\\n\"\n                 f\"【好感度变化】：{result.favor_change:+}\\n\"\n             )\n             \n         #3.旁白小记\n"
+                },
+                {
+                    "date": 1741272918580,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n         if result.narrative:\n             log_pool.append(f\"Narrative: {result.narrative}\")\n             \n         #2.玩家的选择和戈多的反应\n-        if result.player_choice and resultreaction:\n+        if result.player_choice and result.reaction:\n             log_pool.append(\n                 f\"【玩家选择】：{result.player_choice}\\n\"\n                 f\"【戈多的反应】：{result.reaction}\\n\"\n                 f\"【好感度变化】：{result.favor_change:+}\\n\"\n"
                 }
             ],
             "date": 1741258188096,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 6,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1741268507897,
@@ -32,6 +32,10 @@
                 {
                     "date": 1741271646760,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-from story_content import get_nick_name\n+from story_content import get_nickname\n \n class EventResult:\n     def __init__(self, player_choice,reaction, favor_change, past_story=None):\n         self.player_choice = player_choice\n"
+                },
+                {
+                    "date": 1741272834749,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,13 @@\n from story_content import get_nickname\n \n class EventResult:\n-    def __init__(self, player_choice,reaction, favor_change, past_story=None):\n+    def __init__(self, player_choice,reaction, favor_change, past_story=None, narrative=\"\"):\n         self.player_choice = player_choice\n         self.reaction = reaction\n         self.favor_change = favor_change\n         self.past_story = past_story\n+        self.narrative = narrative\n     \n         \n def progress_3_event(favorability):\n     #玩家反驳\n"
                 }
             ],
             "date": 1741268507897,

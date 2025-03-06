@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 12,
             "patches": [
                 {
                     "date": 1741266191384,
@@ -28,6 +28,34 @@
                 {
                     "date": 1741271539142,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n         reaction = [\n             \"\\n你的脸上露出疑惑的神情：「这位先生，请问你是？」\",\n             \"戈多举起咖啡轻酌，「才五年过去，你已经把我给忘了吗？我是戈多，现任检察官。」\"\n         ]\n-        return EventResult(\"表示疑惑询问他是谁\", reaction, 0, get_past_story())\n+        return EventResult(\"表示疑惑询问他是谁\", reaction, 0, get_past_story(favorability))\n \n     elif choice == \"2\":\n         reaction = [\n             \"\\n你点头微笑，表示礼貌。\",\n"
+                },
+                {
+                    "date": 1741272504840,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,19 @@\n from story_content import get_past_story\n \n class EventResult:\n-    def __init__(self, player_choice,reaction, favor_change, past_story=None):\n+    def __init__(self, player_choice,reaction, favor_change, past_story=None, narrative):\n         self.player_choice = player_choice\n         self.reaction = reaction\n         self.favor_change = favor_change\n         self.past_story = past_story\n+        self.narrative = narrative\n \n+\n+\n def progress_1_event(favorability):\n+    narrative = f\"\\n{character['name']}：「无论如何，{get_nickname()}，现在你还是头疼一下你的被告人吧，我可真羡慕他，闯出这么大的祸还要你为他收拾。」\"\n+    print(narrative)\n     print(\"【选项】\\n1. 表示疑惑\\n2. 点头微笑\\n3. 直接反驳\")\n     choice = input(\"输入选项编号(1-3)：\")\n \n     if choice == \"1\":\n"
+                },
+                {
+                    "date": 1741272635399,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n from story_content import get_past_story\n \n class EventResult:\n-    def __init__(self, player_choice,reaction, favor_change, past_story=None, narrative):\n+    def __init__(self, player_choice,reaction, favor_change, past_story=None):\n         self.player_choice = player_choice\n         self.reaction = reaction\n         self.favor_change = favor_change\n         self.past_story = past_story\n@@ -10,37 +10,35 @@\n \n \n \n def progress_1_event(favorability):\n-    narrative = f\"\\n{character['name']}：「无论如何，{get_nickname()}，现在你还是头疼一下你的被告人吧，我可真羡慕他，闯出这么大的祸还要你为他收拾。」\"\n-    print(narrative)\n     print(\"【选项】\\n1. 表示疑惑\\n2. 点头微笑\\n3. 直接反驳\")\n     choice = input(\"输入选项编号(1-3)：\")\n \n     if choice == \"1\":\n         reaction = [\n             \"\\n你的脸上露出疑惑的神情：「这位先生，请问你是？」\",\n             \"戈多举起咖啡轻酌，「才五年过去，你已经把我给忘了吗？我是戈多，现任检察官。」\"\n         ]\n-        return EventResult(\"表示疑惑询问他是谁\", reaction, 0, get_past_story(favorability))\n+        return EventResult(\"表示疑惑询问他是谁\", reaction, 0, get_past_story(favorability), narrative)\n \n     elif choice == \"2\":\n         reaction = [\n             \"\\n你点头微笑，表示礼貌。\",\n             \"戈多微微一笑，「看来你还记得我。」\"\n         ]\n-        return EventResult(\"点头微笑\", reaction, 2)\n+        return EventResult(\"点头微笑\", reaction, 2, None, narrative)\n \n     elif choice == \"3\":\n         reaction = [\n             \"\\n你毫不犹豫地反驳：「这位先生，我不认识你。」\",\n             \"戈多：「哦？律师小姐，看来你贵人多忘事嘛……很好。」\"\n         ]\n-        return EventResult(\"直接反驳\", reaction, -3)\n+        return EventResult(\"直接反驳\", reaction, -3, None, narrative)\n \n     else:\n         reaction = [\n             \"\\n你选择沉默不语。\",\n             \"戈多挑眉，似乎对你无言以对的操作感到意外。\",\n             \"戈多：「什么都不说？真是有趣呢，猫咪小姐。」\"\n         ]\n-        return EventResult(\"沉默\", reaction, 0)\n+        return EventResult(\"沉默\", reaction, 0, None, narrative)\n"
+                },
+                {
+                    "date": 1741272655647,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n         reaction = [\n             \"\\n你的脸上露出疑惑的神情：「这位先生，请问你是？」\",\n             \"戈多举起咖啡轻酌，「才五年过去，你已经把我给忘了吗？我是戈多，现任检察官。」\"\n         ]\n-        return EventResult(\"表示疑惑询问他是谁\", reaction, 0, get_past_story(favorability), narrative)\n+        return EventResult(\"表示疑惑询问他是谁\", reaction, 0, get_past_story(favorability))\n \n     elif choice == \"2\":\n         reaction = [\n             \"\\n你点头微笑，表示礼貌。\",\n"
+                },
+                {
+                    "date": 1741272674446,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,20 +25,20 @@\n         reaction = [\n             \"\\n你点头微笑，表示礼貌。\",\n             \"戈多微微一笑，「看来你还记得我。」\"\n         ]\n-        return EventResult(\"点头微笑\", reaction, 2, None, narrative)\n+        return EventResult(\"点头微笑\", reaction, 2, None)\n \n     elif choice == \"3\":\n         reaction = [\n             \"\\n你毫不犹豫地反驳：「这位先生，我不认识你。」\",\n             \"戈多：「哦？律师小姐，看来你贵人多忘事嘛……很好。」\"\n         ]\n-        return EventResult(\"直接反驳\", reaction, -3, None, narrative)\n+        return EventResult(\"直接反驳\", reaction, -3, None)\n \n     else:\n         reaction = [\n             \"\\n你选择沉默不语。\",\n             \"戈多挑眉，似乎对你无言以对的操作感到意外。\",\n             \"戈多：「什么都不说？真是有趣呢，猫咪小姐。」\"\n         ]\n-        return EventResult(\"沉默\", reaction, 0, None, narrative)\n+        return EventResult(\"沉默\", reaction, 0, None)\n"
+                },
+                {
+                    "date": 1741272750967,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,8 @@\n         self.player_choice = player_choice\n         self.reaction = reaction\n         self.favor_change = favor_change\n         self.past_story = past_story\n-        self.narrative = narrative\n \n \n \n def progress_1_event(favorability):\n"
+                },
+                {
+                    "date": 1741272794085,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n from story_content import get_past_story\n \n class EventResult:\n-    def __init__(self, player_choice,reaction, favor_change, past_story=None):\n+    def __init__(self, player_choice,reaction, favor_change, past_story=None, narrative=\"\"):\n         self.player_choice = player_choice\n         self.reaction = reaction\n         self.favor_change = favor_change\n         self.past_story = past_story\n"
+                },
+                {
+                    "date": 1741272854043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,14 @@\n         self.player_choice = player_choice\n         self.reaction = reaction\n         self.favor_change = favor_change\n         self.past_story = past_story\n+        self.narrative = narrative\n \n \n \n def progress_1_event(favorability):\n+    narrative = \"\"\n     print(\"【选项】\\n1. 表示疑惑\\n2. 点头微笑\\n3. 直接反驳\")\n     choice = input(\"输入选项编号(1-3)：\")\n \n     if choice == \"1\":\n"
                 }
             ],
             "date": 1741266191384,

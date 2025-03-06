@@ -1,13 +1,17 @@
 from story_content import get_past_story
 
 class EventResult:
-    def __init__(self, player_choice,reaction, favor_change, past_story=None):
+    def __init__(self, player_choice,reaction, favor_change, past_story=None, narrative=""):
         self.player_choice = player_choice
         self.reaction = reaction
         self.favor_change = favor_change
         self.past_story = past_story
+        self.narrative = narrative
+
+
 
 def progress_1_event(favorability):
+    narrative = ""
     print("【选项】\n1. 表示疑惑\n2. 点头微笑\n3. 直接反驳")
     choice = input("输入选项编号(1-3)：")
 
@@ -23,14 +27,14 @@ def progress_1_event(favorability):
             "\n你点头微笑，表示礼貌。",
             "戈多微微一笑，「看来你还记得我。」"
         ]
-        return EventResult("点头微笑", reaction, 2)
+        return EventResult("点头微笑", reaction, 2, None)
 
     elif choice == "3":
         reaction = [
             "\n你毫不犹豫地反驳：「这位先生，我不认识你。」",
             "戈多：「哦？律师小姐，看来你贵人多忘事嘛……很好。」"
         ]
-        return EventResult("直接反驳", reaction, -3)
+        return EventResult("直接反驳", reaction, -3, None)
 
     else:
         reaction = [
@@ -38,4 +42,4 @@ def progress_1_event(favorability):
             "戈多挑眉，似乎对你无言以对的操作感到意外。",
             "戈多：「什么都不说？真是有趣呢，猫咪小姐。」"
         ]
-        return EventResult("沉默", reaction, 0)
+        return EventResult("沉默", reaction, 0, None)

@@ -1,3 +1,4 @@
+
 from config import character, initial_favorability
 from story_manager import StoryManager
 

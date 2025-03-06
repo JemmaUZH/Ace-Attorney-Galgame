@@ -1,11 +1,12 @@
 from story_content import get_nickname
 
 class EventResult:
-    def __init__(self, player_choice,reaction, favor_change, past_story=None):
+    def __init__(self, player_choice,reaction, favor_change, past_story=None, narrative=""):
         self.player_choice = player_choice
         self.reaction = reaction
         self.favor_change = favor_change
         self.past_story = past_story
+        self.narrative = narrative
     
         
 def progress_3_event(favorability):
