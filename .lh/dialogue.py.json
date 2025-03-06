@@ -1,0 +1,18 @@
+{
+    "sourceFile": "dialogue.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1741256388861,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1741256388861,
+            "name": "Commit-0",
+            "content": "from config import favorability\nfrom character import get_nickname\nfrom story_log import record_dialogue\nfrom utils import random_narration\n\nprogress = 1\n\ndef run_story():\n    global progress\n    while progress <= 3:\n        if progress == 1:\n            handle_progress_1()\n        elif progress == 2:\n            handle_progress_2()\n        elif progress == 3:\n            handle_progress_3()\n\n\n\ndef choice_event_1():\n    print(\"【选项】\\n1. 表示疑惑询问他是谁\\n2. 点头微笑\\n3. 直接反驳\")\n    choice = input(\"输入选项编号(1-3)：\")\n\n    if choice == \"1\":\n        return \"表示疑惑\", \"我是戈多，现任检察官。\", 0, past_story()\n    elif choice == \"2\":\n        return \"点头微笑\", \"看来你还记得我。\", 2, None\n    elif choice == \"3\":\n        return \"直接反驳\", \"哦？看来你贵人多忘事嘛……很好。\", -3, None\n    else:\n        return \"什么都不说\", \"什么都不说？真是有趣。\", 0, None\n\ndef choice_event_2():\n    print(\"【选项】\\n1. 他是无罪的\\n2. 这与你无关\\n3. 是啊，他真的是很麻烦\")\n    choice = input(\"输入选项编号(1-3)：\")\n\n    if choice == \"1\":\n        return \"他是无罪的\", \"你这么相信他？律师的天真真有意思。\", 0\n    elif choice == \"2\":\n        return \"这与你无关\", \"脸上的笑容消失了：「你以为与你无关？」\", -3\n    elif choice == \"3\":\n        return \"是啊，他真麻烦\", \"啧，我什么时候让你失眠了？\", 5\n    else:\n        return \"沉默不语\", \"怎么了？怕了吗？\", 0\n\ndef choice_event_3():\n    print(\"【选项】\\n1. 冷静分析证据\\n2. 质问戈多\\n3. 坚定维护委托人\")\n    choice = input(\"输入选项编号(1-3)：\")\n\n    if choice == \"1\":\n        return \"冷静分析证据\", \"果然，你还是那个我认识的猫咪小姐。\", 2\n    elif choice == \"2\":\n        return \"质问戈多\", \"有些真相，我只想从你口中听到。\", 1\n    elif choice == \"3\":\n        return \"坚定维护\", \"所以，你终究还是站在他那边啊...\", 0\n    else:\n        return \"沉默不语\", \"沉默不代表无罪。\", 0\n\ndef past_story():\n    parts = [\n        \"——【五年前的回忆】\",\n        \"戈多低头看着杯中苦涩的液体，仿佛陷入回忆。\",\n        \"「那是五年前……你还记得那场离奇的案件吗？」\"\n    ]\n    if favorability > 50:\n        parts.extend([\n            \"「说实话……再次见到你，我其实有点开心。」\",\n            \"但他微笑里透着寒意：「只可惜，当年的你，现在站在了我的对立面。」\"\n        ])\n    else:\n        parts.extend([\n            \"他轻叹一口气：「果然，你把过去都忘了吗？」\"\n        ])\n    return \"\\n\".join(parts)\n"
+        }
+    ]
+}

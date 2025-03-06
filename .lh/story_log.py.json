@@ -1,0 +1,26 @@
+{
+    "sourceFile": "story_log.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1741253678826,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741253744468,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,5 +2,13 @@\n \n def record_dialogue(choice, reaction, favor_change, past_story_text=0):\n     entry = f\"玩家选择：{choice}\\n戈多的反应：{reaction}\\n好感度变化：{favor_change：+}\\n\"\n     if past_story_text:\n-        entry += f\"剧情回忆：{past_story_text}\\n\"\n\\ No newline at end of file\n+        entry += f\"剧情回忆：{past_story_text}\\n\"\n+    log.append(entry)\n+\n+def print_dialogue():\n+    print(\"---------------------------------------------------------------\")\n+    print(\"\\n【对话记录】\")\n+    for entry in log:\n+        print(entry)\n+    print(f\"(最终好感度：{favorability})\")\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1741253753526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n     if past_story_text:\n         entry += f\"剧情回忆：{past_story_text}\\n\"\n     log.append(entry)\n \n-def print_dialogue():\n+def print_dialogue_log():\n     print(\"---------------------------------------------------------------\")\n     print(\"\\n【对话记录】\")\n     for entry in log:\n         print(entry)\n"
+                }
+            ],
+            "date": 1741253678826,
+            "name": "Commit-0",
+            "content": "log = []\n\ndef record_dialogue(choice, reaction, favor_change, past_story_text=0):\n    entry = f\"玩家选择：{choice}\\n戈多的反应：{reaction}\\n好感度变化：{favor_change：+}\\n\"\n    if past_story_text:\n        entry += f\"剧情回忆：{past_story_text}\\n\""
+        }
+    ]
+}

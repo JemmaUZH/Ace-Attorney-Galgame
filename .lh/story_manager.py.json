@@ -1,0 +1,30 @@
+{
+    "sourceFile": "story_manager.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1741256715214,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741256737515,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n from config import character, initial_favorability\n-from dialogue_log import record_dialogue\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
+                },
+                {
+                    "date": 1741256833641,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,18 @@\n from config import character, initial_favorability\n+from dialogue_log import DialogueLog\n+from utils.nickname_manager import get_nickname\n+from events.event_progress_1 import progress_1_event\n+from events.event_progress_2 import progress_2_event\n+from events.event_progress_3 import progress_3_event\n \n-def main():\n-    manager = StoryManager()\n-    manager.start_story()\n+class StoryManager:\n+    def __init__(class NAMEFilter(admin.SimpleListFilter):\n     \n-if __name__ == \"__main__\":\n-    main()\n+        title = ''\n+        parameter_name = ''\n+    \n+        def lookups(self, request, model_admin):\n+            pass\n+    \n+        def queryset(self, request, queryset):\n+            return queryset)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1741257284686,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,14 +5,37 @@\n from events.event_progress_2 import progress_2_event\n from events.event_progress_3 import progress_3_event\n \n class StoryManager:\n-    def __init__(class NAMEFilter(admin.SimpleListFilter):\n-    \n-        title = ''\n-        parameter_name = ''\n-    \n-        def lookups(self, request, model_admin):\n-            pass\n-    \n-        def queryset(self, request, queryset):\n-            return queryset)\n\\ No newline at end of file\n+    def __init__(self):\n+        self.favorability = initial_favorability\n+        self.progress = 1\n+        self.dialogue_log = DialogueLog()\n+        \n+        def start_story(self):\n+            self.introduce_character()\n+            while self.progress <= 3:\n+                self.progress_event()\n+            self.dialogue_log.print_dialogue(self.favorability)\n+        \n+        def introduce_character(self):\n+            print(\"---------------------------------------------------------------\")\n+            for key, value in character.item():\n+                print(f\"{key}: {value}\")\n+                print(\"---------------------------------------------------------------\")\n+            print(f\"「{get_nickname(self.favorability)}，好久不见。」\")\n+            print(f\"{character['name']}检察官微微一笑，目光却如同探针般刺入你的内心。\\n\")\n+            \n+            def run_progress(self):\n+                if self.progress ==1:\n+                    result = progress_1_event(self.favorability)\n+                elif self.progress ==2:\n+                    result = progress_2_event(self.favorability)\n+                else: \n+                    result = progress_3_event(self.favorability)\n+                    \n+                self.favorability += result.favor_change\n+                self.dialogue_log.record(result)\n+                slef.progress += 1\n+            \n+            \n+                    \n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1741256715214,
+            "name": "Commit-0",
+            "content": "from config import character, initial_favorability\nfrom dialogue_log import record_dialogue\n\ndef main():\n    manager = StoryManager()\n    manager.start_story()\n    \nif __name__ == \"__main__\":\n    main()\n"
+        }
+    ]
+}

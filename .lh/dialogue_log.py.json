@@ -1,0 +1,26 @@
+{
+    "sourceFile": "dialogue_log.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1741258188096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741258637504,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,44 @@\n Class Dialoguelog:\n     def __init__(self):\n-        self.log_pool = []\n+        self.logs = []\n+        \n+    def record_log_pool(self,result):\n+        log_pool = []\n+        \n+        #1.narrative\n+        if result.narrative:\n+            log_pool.append(f\"Narrative: {result.narrative}\")\n+            \n+        #2.玩家的选择和戈多的反应\n+        if result.player_choice and result.godot_reaction:\n+            log_pool.append(\n+                f\"【玩家选择】：{result.player_choice}\\n\"\n+                f\"【戈多的反应】：{result.godot_reaction}\\n\"\n+                f\"【好感度变化】：{result.favor_change:+}\\n\"\n+            )\n+            \n+        #3.旁白小记\n+        if result.commentary:\n+            log_pool.append(f\"旁白小记: {result.commentary}\")\n+        \n+        #4.过去剧情\n+        if result.past_story:\n+            log_pool.append(f\"过去剧情: {result.past_story}\")\n+        \n+        full_log = \"\\n\".join(log_pool)\n+        self.logs.append(full_log)\n+        \n+        def print_dialogue(self,final_favorability):\n+            print(\"---------------------------------------------------------------\")\n+            print(\"\\n【对话记录】\")\n+            for log in self.logs:\n+                print(log)\n+            print(\"---------------------------------------------------------------\")\n+            print(f\"Final favorability: {final_favorability}\")\n     \n-    def record_narrative(self, narrative):\n-        self.log_pool.append(f\"Narrative: {narrative}\\n\")\n     \n+    \n     def record_dialogue(self, player_choice, godot_reaction, favor_change, key_note=None, past_story_text=None):\n         self.log_pool.append(   \n             f\"【玩家选择】：{player_choice}\\n\"\n             f\"【戈多的反应】：{godot_reaction}\\n\"\n"
+                },
+                {
+                    "date": 1741258647748,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,22 +33,5 @@\n             print(\"\\n【对话记录】\")\n             for log in self.logs:\n                 print(log)\n             print(\"---------------------------------------------------------------\")\n-            print(f\"Final favorability: {final_favorability}\")\n-    \n-    \n-    \n-    def record_dialogue(self, player_choice, godot_reaction, favor_change, key_note=None, past_story_text=None):\n-        self.log_pool.append(   \n-            f\"【玩家选择】：{player_choice}\\n\"\n-            f\"【戈多的反应】：{godot_reaction}\\n\"\n-            f\"【好感度变化】：{favor_change:+}\\n\"\n-                )\n-        \n-    def record_commentary(self, commentary):\n-        self.log_pool.append(f\"旁白小记: {commentary}\\n\")\n-        \n-    def print_log(self,final_favorability):\n-        for log in self.log_pool:\n-            print(log)\n-        print(f\"Final favorability: {final_favorability}\")\n\\ No newline at end of file\n+            print(f\"Final favorability: {final_favorability}\")\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1741258188096,
+            "name": "Commit-0",
+            "content": "Class Dialoguelog:\n    def __init__(self):\n        self.log_pool = []\n    \n    def record_narrative(self, narrative):\n        self.log_pool.append(f\"Narrative: {narrative}\\n\")\n    \n    def record_dialogue(self, player_choice, godot_reaction, favor_change, key_note=None, past_story_text=None):\n        self.log_pool.append(   \n            f\"【玩家选择】：{player_choice}\\n\"\n            f\"【戈多的反应】：{godot_reaction}\\n\"\n            f\"【好感度变化】：{favor_change:+}\\n\"\n                )\n        \n    def record_commentary(self, commentary):\n        self.log_pool.append(f\"旁白小记: {commentary}\\n\")\n        \n    def print_log(self,final_favorability):\n        for log in self.log_pool:\n            print(log)\n        print(f\"Final favorability: {final_favorability}\")"
+        }
+    ]
+}
