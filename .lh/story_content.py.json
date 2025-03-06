@@ -1,0 +1,26 @@
+{
+    "sourceFile": "story_content.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1741265819799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741266108773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,5 +16,13 @@\n             \"戈多轻叹一口气，微微摇头。\",\n             \"「果然，你已经把过去的一切都抛诸脑后了吗……」\"\n         ])\n     \n-    return \"\\n\".join(parts)\n\\ No newline at end of file\n+    return \"\\n\".join(parts)\n+    \n+def get_nickname(favorability):\n+    if favorability >= 60:\n+        return \"猫咪小姐\"\n+    elif favorability <= 40:\n+        return \"女士\"\n+    else:\n+        return \"被告小姐\"\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1741266123072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,12 @@\n+def get_nickname(favorability):\n+    if favorability >= 60:\n+        return \"猫咪小姐\"\n+    elif favorability <= 40:\n+        return \"女士\"\n+    else:\n+        return \"被告小姐\"\n+\n def get_past_story(favorability):\n     parts = [\n         \"——【五年前的回忆】\",\n         \"戈多低头看着杯中苦涩漆黑的液体，仿佛陷入某种回忆。\",\n@@ -18,11 +26,4 @@\n         ])\n     \n     return \"\\n\".join(parts)\n     \n-def get_nickname(favorability):\n-    if favorability >= 60:\n-        return \"猫咪小姐\"\n-    elif favorability <= 40:\n-        return \"女士\"\n-    else:\n-        return \"被告小姐\"\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1741265819798,
+            "name": "Commit-0",
+            "content": "def get_past_story(favorability):\n    parts = [\n        \"——【五年前的回忆】\",\n        \"戈多低头看着杯中苦涩漆黑的液体，仿佛陷入某种回忆。\",\n        \"「那是五年前……你还记得那场离奇的案件吗？」\",\n        \"「无名尸体、消失的证据、以及……你最后留下的那句‘异议’，我可一直记得。」\"\n    ]\n    \n    if favorability > 50:\n        parts.extend([\n            \"他抬起眼，微微一笑，眼底似乎透出一丝你读不懂的情绪。\",\n            \"「真的是很久了呢。」\",\"\n        ])\n    else:\n        parts.extend([\n            \"戈多轻叹一口气，微微摇头。\",\n            \"「果然，你已经把过去的一切都抛诸脑后了吗……」\"\n        ])\n    \n    return \"\\n\".join(parts)"
+        }
+    ]
+}
