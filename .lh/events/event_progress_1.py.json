@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 27,
+            "activePatchIndex": 28,
             "patches": [
                 {
                     "date": 1741266191384,
@@ -116,6 +116,10 @@
                 {
                     "date": 1741279400654,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n def progress_1_event(favorability):\n     past_story = get_past_story(favorability) if favorability < 60 else None\n \n     print(\"【选项】\\n1. 表示疑惑\\n2. 点头微笑\\n3. 直接反驳\\n\")\n-    choice = input(\"输入选项编号(1-3)：\\\")\n+    choice = input(\"输入选项编号(1-3)：\")\n \n     if choice == \"1\":\n         dialogue_sequence = [\n             {\"speaker\": \"你\", \"line\": \"你的脸上露出疑惑的神情：「这位先生，请问你是？」\"},\n"
+                },
+                {
+                    "date": 1741280446567,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,10 +8,8 @@\n         self.past_story = past_story\n \n def progress_1_event(favorability):\n     past_story = get_past_story(favorability) if favorability < 60 else None\n-\n-    print(\"【选项】\\n1. 表示疑惑\\n2. 点头微笑\\n3. 直接反驳\\n\")\n     choice = input(\"输入选项编号(1-3)：\")\n \n     if choice == \"1\":\n         dialogue_sequence = [\n"
                 }
             ],
             "date": 1741266191384,

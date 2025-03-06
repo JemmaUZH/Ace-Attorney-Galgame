@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 19,
+            "activePatchIndex": 21,
             "patches": [
                 {
                     "date": 1741256715214,
@@ -84,6 +84,14 @@
                 {
                     "date": 1741279460864,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,8 @@\n             else:\n                 print(entry[\"line\"])  # 不要额外加角色名，保证台词自然\n \n         # 加一个空行，作为Progress之间的分隔\n-        print(\"\\n\")\n         print(\"---------------------------------------------------------------\")\n \n         self.favorability += result.favor_change\n         self.dialogue_log.record_log_pool(result)\n"
+                },
+                {
+                    "date": 1741280356808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n         print(\"---------------------------------------------------------------\")\n         for key, value in character.items():\n             print(f\"{key}: {value}\")\n         print(f\"「{get_nickname(self.favorability)}，好久不见。」\")\n-        print(f\"{character['name']}检察官微微一笑，目光却如同探针般刺入你的内心。\\n\")\n+        print(f\"{character['姓名']}检察官微微一笑，目光却如同探针般刺入你的内心。\\n\")\n         \n     def run_progress(self):\n         if self.progress == 1:\n             result = progress_1_event(self.favorability)\n"
+                },
+                {
+                    "date": 1741280458602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,12 +18,22 @@\n         self.dialogue_log.print_dialogue(self.favorability)\n     \n     def introduce_character(self):\n         print(\"---------------------------------------------------------------\")\n+        print(\"【人物档案】\\n\")\n         for key, value in character.items():\n-            print(f\"{key}: {value}\")\n-        print(f\"「{get_nickname(self.favorability)}，好久不见。」\")\n+            print(f\"{key}：{value}\")\n+        print(\"\\n---------------------------------------------------------------\\n\")\n+\n+        print(\"「猫咪小姐，好久不见。」\\n\")\n         print(f\"{character['姓名']}检察官微微一笑，目光却如同探针般刺入你的内心。\\n\")\n+\n+        print(\"---------------------------------------------------------------\")\n+        print(\"【选项】\")\n+        print(\"1. 表示疑惑\")\n+        print(\"2. 点头微笑\")\n+        print(\"3. 直接反驳\")\n+\n         \n     def run_progress(self):\n         if self.progress == 1:\n             result = progress_1_event(self.favorability)\n"
                 }
             ],
             "date": 1741256715214,

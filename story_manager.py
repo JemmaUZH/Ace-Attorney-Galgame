@@ -19,10 +19,20 @@ class StoryManager:
     
     def introduce_character(self):
         print("---------------------------------------------------------------")
+        print("【人物档案】\n")
         for key, value in character.items():
-            print(f"{key}: {value}")
-        print(f"「{get_nickname(self.favorability)}，好久不见。」")
-        print(f"{character['name']}检察官微微一笑，目光却如同探针般刺入你的内心。\n")
+            print(f"{key}：{value}")
+        print("\n---------------------------------------------------------------\n")
+
+        print("「猫咪小姐，好久不见。」\n")
+        print(f"{character['姓名']}检察官微微一笑，目光却如同探针般刺入你的内心。\n")
+
+        print("---------------------------------------------------------------")
+        print("【选项】")
+        print("1. 表示疑惑")
+        print("2. 点头微笑")
+        print("3. 直接反驳")
+
         
     def run_progress(self):
         if self.progress == 1:

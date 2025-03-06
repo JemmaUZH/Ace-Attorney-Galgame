@@ -25,10 +25,10 @@ def progress_2_event(favorability):
     choice = input("输入选项编号(1-3)：")
 
     if choice == "1":
-        dialogue_sequence.append({"speaker": "你", "line": "摇了摇头：「戈多，我相信他是无罪的。」"})
+        dialogue_sequence.append({"speaker": "你", "line": "你摇了摇头：「戈多，我相信他是无罪的。」"})
 
         godot_line = (
-            f"轻笑：「真是难得，{get_nickname(favorability)}，这么多年不见，你还是这么天真。」\n"
+            f"戈多轻笑：「真是难得，{get_nickname(favorability)}，这么多年不见，你还是这么天真。」\n"
             "「你这么相信他，是因为律师的虚张声势，还是只是因为……」\n"
             "他身子前俯，话语却还带一丝玩味：「他是你的男朋友呢？」"
         )
@@ -39,10 +39,10 @@ def progress_2_event(favorability):
 
 
     elif choice == "2":
-        dialogue_sequence.append({"speaker": "你", "line": "只是看了他一眼：「这件事和你无关，检察官先生，我只想保护他。」"})
+        dialogue_sequence.append({"speaker": "你", "line": "你只是看了他一眼：「这件事和你无关，检察官先生，我只想保护他。」"})
 
         godot_line = (
-            f"脸上的笑容消失了，「{get_nickname(favorability)}，我从地狱爬出来，就是为了今天，可以站在这里。」\n"
+            f"戈多脸上的笑容消失了，「{get_nickname(favorability)}，我从地狱爬出来，就是为了今天，可以站在这里。」\n"
             "虽然你看不到他脸上的表情，但你能感受到他在看着你。\n"
             "「怎么会与我无关呢……那就一会儿让我见识一下这个与你有关的男朋友吧。」"
         )

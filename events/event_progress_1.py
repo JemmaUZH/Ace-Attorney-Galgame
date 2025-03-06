@@ -9,8 +9,6 @@ class EventResult:
 
 def progress_1_event(favorability):
     past_story = get_past_story(favorability) if favorability < 60 else None
-
-    print("【选项】\n1. 表示疑惑\n2. 点头微笑\n3. 直接反驳\n")
     choice = input("输入选项编号(1-3)：")
 
     if choice == "1":

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 30,
+            "activePatchIndex": 32,
             "patches": [
                 {
                     "date": 1741267682894,
@@ -128,6 +128,14 @@
                 {
                     "date": 1741279773028,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,17 +25,20 @@\n     choice = input(\"输入选项编号(1-3)：\")\n \n     if choice == \"1\":\n         dialogue_sequence.append({\"speaker\": \"你\", \"line\": \"摇了摇头：「戈多，我相信他是无罪的。」\"})\n-        dialogue_sequence.append({\n-            \"speaker\": \"戈多\",\n-            \"line\": \n-                f\"轻笑：「真是难得，{get_nickname(favorability)}，这么多年不见，你还是这么天真。」\\n\"\n-                \"「你这么相信他，是因为律师的虚张声势，还是只是因为……」\\n\"\n-                \"他身子前俯，话语却还带一丝玩味：「他是你的男朋友呢？」\"\n-        })\n+\n+        godot_line = (\n+            f\"轻笑：「真是难得，{get_nickname(favorability)}，这么多年不见，你还是这么天真。」\\n\"\n+            \"「你这么相信他，是因为律师的虚张声势，还是只是因为……」\\n\"\n+            \"他身子前俯，话语却还带一丝玩味：「他是你的男朋友呢？」\"\n+        )\n+\n+        dialogue_sequence.append({\"speaker\": \"戈多\", \"line\": godot_line})\n+\n         return EventResult(\"他是无罪的\", 0, dialogue_sequence)\n \n+\n     elif choice == \"2\":\n         dialogue_sequence.append({\"speaker\": \"你\", \"line\": \"只是看了他一眼：「这件事和你无关，检察官先生，我只想保护他。」\"})\n \n         godot_line = (\n"
+                },
+                {
+                    "date": 1741280524390,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,12 +38,12 @@\n         return EventResult(\"他是无罪的\", 0, dialogue_sequence)\n \n \n     elif choice == \"2\":\n-        dialogue_sequence.append({\"speaker\": \"你\", \"line\": \"只是看了他一眼：「这件事和你无关，检察官先生，我只想保护他。」\"})\n+        dialogue_sequence.append({\"speaker\": \"你\", \"line\": \"你只是看了他一眼：「这件事和你无关，检察官先生，我只想保护他。」\"})\n \n         godot_line = (\n-            f\"脸上的笑容消失了，「{get_nickname(favorability)}，我从地狱爬出来，就是为了今天，可以站在这里。」\\n\"\n+            f\"戈多脸上的笑容消失了，「{get_nickname(favorability)}，我从地狱爬出来，就是为了今天，可以站在这里。」\\n\"\n             \"虽然你看不到他脸上的表情，但你能感受到他在看着你。\\n\"\n             \"「怎么会与我无关呢……那就一会儿让我见识一下这个与你有关的男朋友吧。」\"\n         )\n \n"
+                },
+                {
+                    "date": 1741280530862,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,12 +24,12 @@\n     print(\"【选项】\\n1. 他是无罪的\\n2. 这与你无关\\n3. 是啊，他真的是很麻烦\\n\")\n     choice = input(\"输入选项编号(1-3)：\")\n \n     if choice == \"1\":\n-        dialogue_sequence.append({\"speaker\": \"你\", \"line\": \"摇了摇头：「戈多，我相信他是无罪的。」\"})\n+        dialogue_sequence.append({\"speaker\": \"你\", \"line\": \"你摇了摇头：「戈多，我相信他是无罪的。」\"})\n \n         godot_line = (\n-            f\"轻笑：「真是难得，{get_nickname(favorability)}，这么多年不见，你还是这么天真。」\\n\"\n+            f\"戈多轻笑：「真是难得，{get_nickname(favorability)}，这么多年不见，你还是这么天真。」\\n\"\n             \"「你这么相信他，是因为律师的虚张声势，还是只是因为……」\\n\"\n             \"他身子前俯，话语却还带一丝玩味：「他是你的男朋友呢？」\"\n         )\n \n"
                 }
             ],
             "date": 1741267682894,
