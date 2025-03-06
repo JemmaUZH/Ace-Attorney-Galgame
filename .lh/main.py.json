@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1741256748536,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741270817287,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n from config import character, initial_favorability\n+from mange import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
+                },
+                {
+                    "date": 1741270826179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n from config import character, initial_favorability\n-from mange import StoryManager\n+from manger import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
+                },
+                {
+                    "date": 1741270837266,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n from config import character, initial_favorability\n-from manger import StoryManager\n+from story_manger import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
                 }
             ],
             "date": 1741256748536,

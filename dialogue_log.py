@@ -1,4 +1,5 @@
-Class Dialoguelog:
+
+class DialogueLog:
     def __init__(self):
         self.logs = []
         

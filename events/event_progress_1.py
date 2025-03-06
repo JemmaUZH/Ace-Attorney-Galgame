@@ -1,19 +1,9 @@
 from story_content import get_past_story
 
-Class EventResult:
-    def __init__(self, player_choice,reaction, favor_change, past_story):
+class EventResult:
+    def __init__(self, player_choice,reaction, favor_change, past_story=None):
         self.player_choice = player_choice
         self.reaction = reaction
-        self.favor_change = favor_change
-        self.past_story = past_story
-    
-    def progress_1_event(favorability):
-        from utils.past_story import get_past_story
-
-class EventResult:
-    def __init__(self, player_choice, reaction, favor_change, past_story=None):
-        self.player_choice = player_choice
-        self.reaction = reaction  # reaction改成list，存多行
         self.favor_change = favor_change
         self.past_story = past_story
 
@@ -49,5 +39,3 @@ def progress_1_event(favorability):
             "戈多：「什么都不说？真是有趣呢，猫咪小姐。」"
         ]
         return EventResult("沉默", reaction, 0)
-
-        

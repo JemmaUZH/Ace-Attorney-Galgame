@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1741258188096,
@@ -16,6 +16,14 @@
                 {
                     "date": 1741258647748,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,22 +33,5 @@\n             print(\"\\n【对话记录】\")\n             for log in self.logs:\n                 print(log)\n             print(\"---------------------------------------------------------------\")\n-            print(f\"Final favorability: {final_favorability}\")\n-    \n-    \n-    \n-    def record_dialogue(self, player_choice, godot_reaction, favor_change, key_note=None, past_story_text=None):\n-        self.log_pool.append(   \n-            f\"【玩家选择】：{player_choice}\\n\"\n-            f\"【戈多的反应】：{godot_reaction}\\n\"\n-            f\"【好感度变化】：{favor_change:+}\\n\"\n-                )\n-        \n-    def record_commentary(self, commentary):\n-        self.log_pool.append(f\"旁白小记: {commentary}\\n\")\n-        \n-    def print_log(self,final_favorability):\n-        for log in self.log_pool:\n-            print(log)\n-        print(f\"Final favorability: {final_favorability}\")\n\\ No newline at end of file\n+            print(f\"Final favorability: {final_favorability}\")\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1741270911997,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n-Class Dialoguelog:\n+\n+Class DialogueLog:\n     def __init__(self):\n         self.logs = []\n         \n     def record_log_pool(self,result):\n"
+                },
+                {
+                    "date": 1741270943099,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n \n-Class DialogueLog:\n+class DialogueLog:\n     def __init__(self):\n         self.logs = []\n         \n     def record_log_pool(self,result):\n"
                 }
             ],
             "date": 1741258188096,

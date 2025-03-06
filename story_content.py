@@ -17,7 +17,7 @@ def get_past_story(favorability):
     if favorability > 50:
         parts.extend([
             "他抬起眼，微微一笑，眼底似乎透出一丝你读不懂的情绪。",
-            "「真的是很久了呢。」","
+            "「真的是很久了呢。」"
         ])
     else:
         parts.extend([

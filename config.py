@@ -8,7 +8,7 @@ character = {
     "signature_move": "用温柔的语气说出最让人窒息的话"
 }
 
-favorability = 60
+initial_favorability = 60
 progress = 1
 
 narration_notes = [
