@@ -1,4 +1,5 @@
 import random
+from config import narration_notes
 
 class DialogueLog:
     def __init__(self):
@@ -6,6 +7,7 @@ class DialogueLog:
         
     def record_log_pool(self,result):
         log_pool = []
+        review = random.choice(narration_notes)
         
         #1.narrative
         if result.narrative:
@@ -20,20 +22,23 @@ class DialogueLog:
             )
             
         #3.旁白小记
-        if result.commentary:
-            log_pool.append(f"旁白小记: {result.commentary}")
+        # if result.commentary:
+        #     log_pool.append(f"旁白小记: {result.commentary}")
         
         #4.过去剧情
         if result.past_story:
             log_pool.append(f"过去剧情: {result.past_story}")
         
+        log_pool.append(f"旁白小记：{review}\n")
+        
         full_log = "\n".join(log_pool)
+        
         self.logs.append(full_log)
         
-        def print_dialogue(self,final_favorability):
-            print("---------------------------------------------------------------")
-            print("\n【对话记录】")
-            for log in self.logs:
-                print(log)
-            print("---------------------------------------------------------------")
-            print(f"Final favorability: {final_favorability}")
+    def print_dialogue(self,final_favorability):
+        print("---------------------------------------------------------------")
+        print("\n【对话记录】")
+        for log in self.logs:
+            print(log)
+        print("---------------------------------------------------------------")
+        print(f"Final favorability: {final_favorability}")

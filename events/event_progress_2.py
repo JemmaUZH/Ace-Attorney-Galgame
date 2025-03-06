@@ -1,7 +1,7 @@
 from story_content import get_nickname
 
 class EventResult:
-    def __init__(self, player_choice,reaction, favor_change, past_story=None, narrative=None):
+    def __init__(self, player_choice,reaction, favor_change, past_story=None, narrative=""):
         self.player_choice = player_choice
         self.reaction = reaction
         self.favor_change = favor_change
@@ -11,7 +11,7 @@ class EventResult:
 
 def progress_2_event(favorability):
     
-    narrative = f"\n戈多：「无论如何，{get_nickname()}，现在你还是头疼一下你的被告人吧，我可真羡慕他，闯出这么大的祸还要你为他收拾。」"
+    narrative = f"\n戈多：「无论如何，{get_nickname(favorability)}，现在你还是头疼一下你的被告人吧，我可真羡慕他，闯出这么大的祸还要你为他收拾。」"
     print(narrative)
     
     print("【选项】\n1. 他是无罪的\n2. 这与你无关\n3. 是啊，他真的是很麻烦")
