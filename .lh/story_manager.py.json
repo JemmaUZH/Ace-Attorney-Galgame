@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 19,
             "patches": [
                 {
                     "date": 1741256715214,
@@ -60,6 +60,30 @@
                 {
                     "date": 1741274165106,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,8 +30,11 @@\n         elif self.progress ==2:\n             result = progress_2_event(self.favorability)\n         else: \n             result = progress_3_event(self.favorability)\n+        \n+        for line in result.reaction:\n+            print(line)\n             \n         self.favorability += result.favor_change\n         self.dialogue_log.record_log_pool(result)\n         self.progress += 1\n"
+                },
+                {
+                    "date": 1741276492850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,11 @@\n             result = progress_2_event(self.favorability)\n         else: \n             result = progress_3_event(self.favorability)\n         \n-        for line in result.reaction:\n-            print(line)\n+        # 逐行打印对话序列（dialogue_sequence）\n+        for entry in result.dialogue_sequence:\n+            print(f\"{entry['speaker']}：{entry['line']}\")\n             \n         self.favorability += result.favor_change\n         self.dialogue_log.record_log_pool(result)\n         self.progress += 1\n"
+                },
+                {
+                    "date": 1741278509656,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,13 @@\n             result = progress_3_event(self.favorability)\n         \n         # 逐行打印对话序列（dialogue_sequence）\n         for entry in result.dialogue_sequence:\n-            print(f\"{entry['speaker']}：{entry['line']}\")\n+            if entry[\"speaker\"] == \"Narrator\":\n+                print(entry[\"line\"])  # 旁白不要带\"Narrator\"\n+            else:\n+                print(f\"{entry['speaker']}：{entry['line']}\")  # 其他角色用中文名\n+\n             \n         self.favorability += result.favor_change\n         self.dialogue_log.record_log_pool(result)\n         self.progress += 1\n"
+                },
+                {
+                    "date": 1741278947144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,13 +33,11 @@\n             result = progress_3_event(self.favorability)\n         \n         # 逐行打印对话序列（dialogue_sequence）\n         for entry in result.dialogue_sequence:\n-            if entry[\"speaker\"] == \"Narrator\":\n-                print(entry[\"line\"])  # 旁白不要带\"Narrator\"\n-            else:\n-                print(f\"{entry['speaker']}：{entry['line']}\")  # 其他角色用中文名\n+            print(entry[\"line\"]) \n \n+\n             \n         self.favorability += result.favor_change\n         self.dialogue_log.record_log_pool(result)\n         self.progress += 1\n"
+                },
+                {
+                    "date": 1741279273431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,23 +24,28 @@\n         print(f\"「{get_nickname(self.favorability)}，好久不见。」\")\n         print(f\"{character['name']}检察官微微一笑，目光却如同探针般刺入你的内心。\\n\")\n         \n     def run_progress(self):\n-        if self.progress ==1:\n+        if self.progress == 1:\n             result = progress_1_event(self.favorability)\n-        elif self.progress ==2:\n+        elif self.progress == 2:\n             result = progress_2_event(self.favorability)\n-        else: \n+        else:\n             result = progress_3_event(self.favorability)\n-        \n-        # 逐行打印对话序列（dialogue_sequence）\n+\n+        # 每条对话正常打印\n         for entry in result.dialogue_sequence:\n-            print(entry[\"line\"]) \n+            if entry[\"speaker\"] == \"Narrator\":\n+                print(entry[\"line\"])\n+            else:\n+                print(entry[\"line\"])  # 不要额外加角色名，保证台词自然\n \n+        # 加一个空行，作为Progress之间的分隔\n+        print(\"\\n\")\n \n-            \n         self.favorability += result.favor_change\n         self.dialogue_log.record_log_pool(result)\n         self.progress += 1\n+\n         \n         \n                 \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1741279448777,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,8 +40,9 @@\n                 print(entry[\"line\"])  # 不要额外加角色名，保证台词自然\n \n         # 加一个空行，作为Progress之间的分隔\n         print(\"\\n\")\n+        print(\"---------------------------------------------------------------\")\n \n         self.favorability += result.favor_change\n         self.dialogue_log.record_log_pool(result)\n         self.progress += 1\n"
+                },
+                {
+                    "date": 1741279460864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,8 @@\n             else:\n                 print(entry[\"line\"])  # 不要额外加角色名，保证台词自然\n \n         # 加一个空行，作为Progress之间的分隔\n-        print(\"\\n\")\n         print(\"---------------------------------------------------------------\")\n \n         self.favorability += result.favor_change\n         self.dialogue_log.record_log_pool(result)\n"
                 }
             ],
             "date": 1741256715214,
