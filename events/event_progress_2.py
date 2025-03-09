@@ -100,7 +100,7 @@ def progress_2_event(favorability: int) -> EventResult:
         dialogue_sequence.append({"speaker": "戈多", "line": "「哦？律师小姐，看来你贵人多忘事嘛……很好。」"})
         return EventResult("是啊，他真的是很麻烦", 5, dialogue_sequence)
 
-    else：
+    else:
         logger.warning(f"Unexpected choice '{choice}', defaulting to silence.")
         dialogue_sequence.append({"speaker": "你", "line": "选择沉默不语。"})
         dialogue_sequence.append({"speaker": "戈多", "line": "「怎么了，是还在烦恼你新男朋友的案件吗？」"})

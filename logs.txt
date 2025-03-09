@@ -9,3 +9,10 @@
 2025-03-08 23:57:29 - INFO - Player chose to believe in the defendant's innocence.
 2025-03-08 23:57:29 - INFO - Player chose to analyze the evidence calmly.
 2025-03-08 23:57:29 - INFO - Story ended.
+2025-03-09 13:23:52 - INFO - Story Manager initialized.
+2025-03-09 13:23:52 - INFO - Story started.
+2025-03-09 13:23:55 - INFO - Player chose to express confusion and ask who he is.
+2025-03-09 13:23:55 - INFO - 戈多：「无论如何，猫咪小姐，现在你还是头疼一下你的被告人吧，我可真羡慕他，闯出这么大的祸还要你为他收拾。」
+2025-03-09 13:24:12 - INFO - Player chose to believe in the defendant's innocence.
+2025-03-09 13:24:22 - INFO - Player chose to ask why Godot suddenly came back.
+2025-03-09 13:24:22 - INFO - Story ended.

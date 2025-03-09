@@ -14,7 +14,7 @@ class EventResult:
         dialogue_sequence (List[Dict[str, str]]): 记录游戏对话过程，每个元素是 {"speaker": str, "line": str}。
         past_story (Optional[str]): 过去故事内容，默认为 None。
     """   
-    def __init__(self, player_choice: str, favor_change: int, dialogue_sequence: List[Dict[str, str]], past_story: Optional[str] = None):
+    def __init__(self, player_choice: str, favor_change: int, dialogue_sequence: List[dict[str, str]], past_story: Optional[str] = None):
         self.player_choice = player_choice
         self.dialogue_sequence = dialogue_sequence
         self.favor_change = favor_change
@@ -77,7 +77,7 @@ def progress_1_event(favorability: int) -> EventResult:
         ]
         return EventResult("直接反驳", -3, dialogue_sequence)
 
-    else：
+    else:
         logger.warning(f"Unexpected choice '{choice}', defaulting to silence.")
         dialogue_sequence = [
             {"speaker": "你", "line": "你选择沉默不语。"},

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 35,
+            "activePatchIndex": 36,
             "patches": [
                 {
                     "date": 1741268507897,
@@ -148,6 +148,10 @@
                 {
                     "date": 1741522429701,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -118,8 +118,12 @@\n         dialogue_sequence.append({\"speaker\": \"戈多\", \"line\": \"戈多微微摇头「所以，你终究还是站在他那边啊……」\"})\n         return EventResult(\"坚定维护委托人\", 0, dialogue_sequence)\n \n     else:\n-        logger.info(\"Player chose to remain silent.\")\n+        # 理论上不会执行，但以防万一\n+        logger.warning(f\"Unexpected choice '{choice}', defaulting to silence.\")\n+        player_choice_text = \"沉默\"\n         dialogue_sequence.append({\"speaker\": \"你\", \"line\": \"你保持沉默，不做任何反应。\"})\n         dialogue_sequence.append({\"speaker\": \"戈多\", \"line\": f\"「沉默不代表无罪，{get_nickname(favorability)}。」\"})\n-        return EventResult(\"沉默\", 0, dialogue_sequence)\n+        favor_change = 0\n+\n+    return EventResult(player_choice_text, favor_change, dialogue_sequence)\n"
+                },
+                {
+                    "date": 1741523028596,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n         favor_change (int): 选项对好感度的影响。\n         dialogue_sequence (List[Dict[str, str]]): 记录游戏对话过程，每个元素是 {\"speaker\": str, \"line\": str}。\n         past_story (Optional[str]): 过去故事内容，默认为 None。\n     \"\"\"\n-    def __init__(self, player_choice: str, favor_change: int, dialogue_sequence: List[Dict[str, str]], past_story: Optional[str] = None):\n+    def __init__(self, player_choice: str, favor_change: int, dialogue_sequence: List[dict[str, str]], past_story: Optional[str] = None):\n         self.player_choice = player_choice\n         self.favor_change = favor_change\n         self.dialogue_sequence = dialogue_sequence\n         self.past_story = past_story\n"
                 }
             ],
             "date": 1741268507897,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 41,
+            "activePatchIndex": 43,
             "patches": [
                 {
                     "date": 1741266191384,
@@ -172,6 +172,14 @@
                 {
                     "date": 1741522458007,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,10 +76,11 @@\n             {\"speaker\": \"戈多\", \"line\": \"「哦？律师小姐，看来你贵人多忘事嘛……很好。」\"}\n         ]\n         return EventResult(\"直接反驳\", -3, dialogue_sequence)\n \n-    logger.warning(f\"Unexpected choice '{choice}', defaulting to silence.\")\n-    dialogue_sequence = [\n-        {\"speaker\": \"你\", \"line\": \"你选择沉默不语。\"},\n-        {\"speaker\": \"戈多\", \"line\": \"戈多挑眉，似乎对你无言以对的操作感到意外。\"},\n-    ]\n-    return EventResult(\"沉默\", 0, dialogue_sequence)\n\\ No newline at end of file\n+    else：\n+        logger.warning(f\"Unexpected choice '{choice}', defaulting to silence.\")\n+        dialogue_sequence = [\n+            {\"speaker\": \"你\", \"line\": \"你选择沉默不语。\"},\n+            {\"speaker\": \"戈多\", \"line\": \"戈多挑眉，似乎对你无言以对的操作感到意外。\"},\n+        ]\n+        return EventResult(\"沉默\", 0, dialogue_sequence)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1741522997907,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,9 +76,9 @@\n             {\"speaker\": \"戈多\", \"line\": \"「哦？律师小姐，看来你贵人多忘事嘛……很好。」\"}\n         ]\n         return EventResult(\"直接反驳\", -3, dialogue_sequence)\n \n-    else：\n+    else:\n         logger.warning(f\"Unexpected choice '{choice}', defaulting to silence.\")\n         dialogue_sequence = [\n             {\"speaker\": \"你\", \"line\": \"你选择沉默不语。\"},\n             {\"speaker\": \"戈多\", \"line\": \"戈多挑眉，似乎对你无言以对的操作感到意外。\"},\n"
+                },
+                {
+                    "date": 1741523009219,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n         favor_change (int): 选项对好感度的影响。\n         dialogue_sequence (List[Dict[str, str]]): 记录游戏对话过程，每个元素是 {\"speaker\": str, \"line\": str}。\n         past_story (Optional[str]): 过去故事内容，默认为 None。\n     \"\"\"   \n-    def __init__(self, player_choice: str, favor_change: int, dialogue_sequence: List[Dict[str, str]], past_story: Optional[str] = None):\n+    def __init__(self, player_choice: str, favor_change: int, dialogue_sequence: List[dict[str, str]], past_story: Optional[str] = None):\n         self.player_choice = player_choice\n         self.dialogue_sequence = dialogue_sequence\n         self.favor_change = favor_change\n         self.past_story = past_story\n"
                 }
             ],
             "date": 1741266191384,
