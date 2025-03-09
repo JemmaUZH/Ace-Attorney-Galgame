@@ -1,0 +1,22 @@
+{
+    "sourceFile": "tests/test_progress_2.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1741522866123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741522873388,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,39 @@\n+import pytest\n+from unittest.mock import patch\n+from your_module_name import EventResult, sanitize_input, progress_2_event  # 替换 your_module_name\n+from story_content import get_nickname\n+\n+@pytest.mark.parametrize(\n+    \"user_input, valid_choices, expected\",\n+    [\n+        (\"1\", [\"1\", \"2\", \"3\"], \"1\"),\n+        (\" 2 \", [\"1\", \"2\", \"3\"], \"2\"),  # 测试去除空格\n+        (\"4\", [\"1\", \"2\", \"3\"], \"invalid\"),  # 无效选项\n+        (\"hello\", [\"1\", \"2\", \"3\"], \"invalid\"),  # 非数字输入\n+    ],\n+)\n+def test_sanitize_input(user_input, valid_choices, expected):\n+    assert sanitize_input(user_input, valid_choices) == expected\n+\n+@pytest.mark.parametrize(\n+    \"choice, expected_choice, expected_favor_change\",\n+    [\n+        (\"1\", \"他是无罪的\", 0),\n+        (\"2\", \"这与你无关\", -3),\n+        (\"3\", \"是啊，他真的是很麻烦\", 5),\n+        (\"x\", \"沉默\", 0),\n+    ],\n+)\n+def test_progress_2_event(choice, expected_choice, expected_favor_change):\n+    favorability = 50  # 测试用默认值\n+    nickname = \"小猫咪\"  # 假设 `get_nickname` 返回的值\n+    with patch(\"builtins.input\", return_value=choice), patch(\"story_content.get_nickname\", return_value=nickname):\n+        result = progress_2_event(favorability)\n+\n+    assert isinstance(result, EventResult)\n+    assert result.player_choice == expected_choice\n+    assert result.favor_change == expected_favor_change\n+\n+    # 确保对话序列不为空\n+    assert result.dialogue_sequence\n+    assert any(\"戈多\" in dialogue[\"speaker\"] for dialogue in result.dialogue_sequence)\n"
+                }
+            ],
+            "date": 1741522866123,
+            "name": "Commit-0",
+            "content": ""
+        }
+    ]
+}
