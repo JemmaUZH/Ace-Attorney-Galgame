@@ -1,0 +1,18 @@
+{
+    "sourceFile": "README.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1741531332041,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1741531332041,
+            "name": "Commit-0",
+            "content": "# **逆转裁判Galgame - 交互式剧情游戏框架**\n\n## 📖 **项目简介**\n**逆转裁判-Galgame** 是一个交互式剧情游戏框架，允许玩家在文本对话中做出选择，影响剧情发展与角色关系。游戏围绕核心角色 **戈多** 展开，玩家的选择将影响对话内容、角色好感度（likability）以及剧情走向。\n\n本项目采用 **Python** 进行开发，并使用 **JSON** 进行数据存储，同时支持未来扩展至 **SQLite** 以支持更复杂的数据管理。\n\n---\n\n## 🔧 **项目结构**\n```\n30days/\n│── main.py                  # 入口文件，启动游戏\n│── config.py                # 配置文件，存储全局参数\n│── story_manager.py         # 故事管理器，控制游戏流程\n│── event_handler.py         # 事件管理器，处理不同的剧情进展\n│── game_state.py            # 游戏状态管理，存储好感度、进度等信息\n│── dialogue_log.py          # 对话记录系统\n│── events/                  # 事件处理模块\n│   │── event_progress_1.py  # 第一阶段剧情事件\n│   │── event_progress_2.py  # 第二阶段剧情事件\n│   │── event_progress_3.py  # 第三阶段剧情事件\n│── story_content.py         # 固定剧情文本，如背景故事、角色信息\n│── utils/                   # 辅助工具模块\n│── tests/                   # 测试用例\n│── README.md                # 说明文档\n```\n\n---\n\n## 🚀 **安装与运行**\n\n### **1️⃣ 安装环境**\n确保系统已安装 **Python 3.8+**，然后创建并激活虚拟环境：\n```bash\npython -m venv .venv\nsource .venv/bin/activate  # MacOS/Linux\n.venv\\Scripts\\activate    # Windows\n```\n\n### **2️⃣ 安装依赖**\n```bash\npip install -r requirements.txt\n```\n\n### **3️⃣ 运行游戏**\n```bash\npython main.py\n```\n\n---\n\n## 🎮 **游戏玩法**\n- 游戏以文本对话的方式进行，玩家可选择不同选项，影响剧情发展。\n- 角色 **戈多** 会根据玩家的对话历史、好感度等动态调整反应。\n- 游戏状态（如 **好感度 likability**）会影响角色称呼、语气和故事结局。\n\n示例：\n```\n「猫咪小姐，好久不见。」\n\n【选项】\n1. 表示疑惑\n2. 点头微笑\n3. 直接反驳\n\n输入选项编号(1-3)：\n```\n\n---\n\n## 🔬 **技术实现**\n### **✨ 主要功能**\n- **事件驱动的游戏进程**：使用 `EventHandler` 处理不同剧情节点。\n- **动态好感度系统**：`GameState` 记录玩家选择并实时调整好感度。\n- **对话日志管理**：`DialogueLog` 记录游戏中的所有对话和事件。\n- **可扩展的存储系统**：目前采用 **JSON** 存储，未来可扩展至 **SQLite**。\n- **日志与调试支持**：使用 `logging` 记录游戏运行情况，便于调试。\n\n---\n\n## ✅ **未来改进计划**\n- [ ] **增加多角色互动**，扩展除 **戈多** 以外的可攻略角色。\n- [ ] **优化 AI 角色对话逻辑**，基于历史对话增强 NPC 反应。\n- [ ] **加入存档功能**，允许玩家保存/读取游戏进度。\n- [ ] **支持 GUI 界面**，提供更直观的用户交互体验。\n- [ ] **扩展游戏事件系统**，允许复杂剧情分支。\n\n---\n\n## 👥 **贡献 & 反馈**\n欢迎提交 **Issue** 或 **Pull Request**！\n如果你有任何建议或发现 Bug，请在 GitHub 上提交 Issue，让我们一起优化这个项目！ 🎉\n\n"
+        }
+    ]
+}
