@@ -1,3 +1,19 @@
+import logging
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,  # 记录INFO级别以上的日志
+    format="%(asctime)s - %(levelname)s - %(message)s",  # 日志格式
+    datefmt="%Y-%m-%d %H:%M:%S",  # 时间格式
+    handlers=[
+        logging.FileHandler("logs.txt", encoding="utf-8"),  # 日志写入 logs.txt 文件
+        logging.StreamHandler()  # 也在控制台显示
+    ]
+)
+
+logger = logging.getLogger(__name__)  # 获取日志对象
+
+
 character = {
     "姓名": "戈多",
     "年龄": 27,

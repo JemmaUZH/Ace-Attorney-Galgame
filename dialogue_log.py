@@ -10,7 +10,8 @@ class DialogueLog:
         review = random.choice(narration_notes)
 
         # 【对话记录】部分
-        log_pool.append("【对话记录】\n")
+        log_pool.append("【对话记录】\n"
+                        )
         for entry in result.dialogue_sequence:
             log_pool.append(f"{entry['line']}")  # 角色名已经在line里，无需加前缀
 
@@ -22,7 +23,7 @@ class DialogueLog:
 
         # 记录过去剧情（如果有）
         if result.past_story:
-            log_pool.append(f"【过去剧情】{result.past_story}\n")
+            log_pool.append(f"{result.past_story}\n")
 
         # 记录旁白小记
         log_pool.append(f"————旁白小记：{review}\n")

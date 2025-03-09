@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 21,
+            "activePatchIndex": 27,
             "patches": [
                 {
                     "date": 1741256715214,
@@ -92,6 +92,30 @@
                 {
                     "date": 1741280458602,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,12 +18,22 @@\n         self.dialogue_log.print_dialogue(self.favorability)\n     \n     def introduce_character(self):\n         print(\"---------------------------------------------------------------\")\n+        print(\"【人物档案】\\n\")\n         for key, value in character.items():\n-            print(f\"{key}: {value}\")\n-        print(f\"「{get_nickname(self.favorability)}，好久不见。」\")\n+            print(f\"{key}：{value}\")\n+        print(\"\\n---------------------------------------------------------------\\n\")\n+\n+        print(\"「猫咪小姐，好久不见。」\\n\")\n         print(f\"{character['姓名']}检察官微微一笑，目光却如同探针般刺入你的内心。\\n\")\n+\n+        print(\"---------------------------------------------------------------\")\n+        print(\"【选项】\")\n+        print(\"1. 表示疑惑\")\n+        print(\"2. 点头微笑\")\n+        print(\"3. 直接反驳\")\n+\n         \n     def run_progress(self):\n         if self.progress == 1:\n             result = progress_1_event(self.favorability)\n"
+                },
+                {
+                    "date": 1741280665068,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,8 +40,14 @@\n         elif self.progress == 2:\n             result = progress_2_event(self.favorability)\n         else:\n             result = progress_3_event(self.favorability)\n+            \n+        # 如果有过去剧情，先打印过去剧情\n+        if result.past_story:\n+            print(\"\\n【过去剧情】\")\n+            print(result.past_story)\n+            print()\n \n         # 每条对话正常打印\n         for entry in result.dialogue_sequence:\n             if entry[\"speaker\"] == \"Narrator\":\n"
+                },
+                {
+                    "date": 1741474165301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,14 +9,17 @@\n     def __init__(self):\n         self.favorability = initial_favorability\n         self.progress = 1\n         self.dialogue_log = DialogueLog()\n+        logger.info(\"Story Manager initialized.\")\n         \n     def start_story(self):\n+        logger.info(\"Story started.\")\n         self.introduce_character()\n         while self.progress <= 3:\n             self.run_progress()\n         self.dialogue_log.print_dialogue(self.favorability)\n+        logger.info(\"Story ended.\")\n     \n     def introduce_character(self):\n         print(\"---------------------------------------------------------------\")\n         print(\"【人物档案】\\n\")\n"
+                },
+                {
+                    "date": 1741474554606,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,13 @@\n+import logging\n from config import character, initial_favorability\n from dialogue_log import DialogueLog\n from story_content import get_nickname\n from events.event_progress_1 import progress_1_event\n from events.event_progress_2 import progress_2_event\n from events.event_progress_3 import progress_3_event\n \n+logger = logging.getLogger(__name__)\n class StoryManager:\n     def __init__(self):\n         self.favorability = initial_favorability\n         self.progress = 1\n"
+                },
+                {
+                    "date": 1741474644702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,14 @@\n import logging\n-from config import character, initial_favorability\n+from config import character, initial_favorability, logger\n from dialogue_log import DialogueLog\n from story_content import get_nickname\n from events.event_progress_1 import progress_1_event\n from events.event_progress_2 import progress_2_event\n from events.event_progress_3 import progress_3_event\n \n logger = logging.getLogger(__name__)\n+\n class StoryManager:\n     def __init__(self):\n         self.favorability = initial_favorability\n         self.progress = 1\n"
+                },
+                {
+                    "date": 1741521355236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,23 +8,32 @@\n \n logger = logging.getLogger(__name__)\n \n class StoryManager:\n+    \"\"\"\n+    故事管理器，负责整个故事的流程控制\n+    \"\"\"\n     def __init__(self):\n         self.favorability = initial_favorability\n         self.progress = 1\n         self.dialogue_log = DialogueLog()\n         logger.info(\"Story Manager initialized.\")\n         \n     def start_story(self):\n+        \"\"\"\n+        启动故事流程，依次运行剧情时间\n+        \"\"\"\n         logger.info(\"Story started.\")\n         self.introduce_character()\n         while self.progress <= 3:\n             self.run_progress()\n         self.dialogue_log.print_dialogue(self.favorability)\n         logger.info(\"Story ended.\")\n     \n     def introduce_character(self):\n+        \"\"\"\n+        介绍人物，打印人物档案和开场白\n+        \"\"\"\n         print(\"---------------------------------------------------------------\")\n         print(\"【人物档案】\\n\")\n         for key, value in character.items():\n             print(f\"{key}：{value}\")\n"
+                },
+                {
+                    "date": 1741521427498,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,8 +49,12 @@\n         print(\"3. 直接反驳\")\n \n         \n     def run_progress(self):\n+        \"\"\"\n+        运行剧情进程，根据进度调用不同的事件处理函数\n+        \"\"\"\n+        \n         if self.progress == 1:\n             result = progress_1_event(self.favorability)\n         elif self.progress == 2:\n             result = progress_2_event(self.favorability)\n"
                 }
             ],
             "date": 1741256715214,

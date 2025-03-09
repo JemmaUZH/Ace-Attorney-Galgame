@@ -1,0 +1,11 @@
+2025-03-08 23:55:57 - INFO - Story Manager initialized.
+2025-03-08 23:55:57 - INFO - Story started.
+2025-03-08 23:56:20 - INFO - Story Manager initialized.
+2025-03-08 23:56:20 - INFO - Story started.
+2025-03-08 23:56:21 - INFO - Player chose to express confusion and ask who he is.
+2025-03-08 23:57:26 - INFO - Story Manager initialized.
+2025-03-08 23:57:26 - INFO - Story started.
+2025-03-08 23:57:27 - INFO - Player chose to express confusion and ask who he is.
+2025-03-08 23:57:29 - INFO - Player chose to believe in the defendant's innocence.
+2025-03-08 23:57:29 - INFO - Player chose to analyze the evidence calmly.
+2025-03-08 23:57:29 - INFO - Story ended.
