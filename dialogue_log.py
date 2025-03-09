@@ -32,10 +32,10 @@ class DialogueLog:
         full_log = "\n".join(log_pool)
         self.logs.append(full_log)
 
-    def print_dialogue(self, final_favorability):
+    def print_dialogue(self, final_likability):
         print("日志记录")
         print("---------------------------------------------------------------")
         for log in self.logs:
             print(log)
         print("---------------------------------------------------------------")
-        print(f"Final favorability: {final_favorability}")
+        print(f"Final likability: {final_likability}")

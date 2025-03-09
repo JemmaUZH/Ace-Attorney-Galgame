@@ -1,0 +1,22 @@
+{
+    "sourceFile": "event_handler.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1741529657354,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741530405031,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,31 +1,32 @@\n import logging\n-from game_state import GameState\n from events.event_progress_1 import progress_1_event\n from events.event_progress_2 import progress_2_event\n from events.event_progress_3 import progress_3_event\n \n logger = logging.getLogger(__name__)\n \n class EventHandler:\n-    \"\"\"管理所有事件调用\"\"\"\n-    def __init__(self, game_state: GameState):\n-        self.game_state = game_state\n-        self.event_map = {\n-            1: progress_1_event,\n-            2: progress_2_event,\n-            3: progress_3_event\n-        }\n+    \"\"\"\n+    事件处理器，根据游戏进度调用不同的事件逻辑。\n+    \"\"\"\n \n-    def run_event(self):\n-        \"\"\"运行当前进度的事件\"\"\"\n-        progress = self.game_state.get_state()[\"progress\"]\n-        if progress not in self.event_map:\n-            logger.error(\"无效的进度: %s\", progress)\n-            return\n-        \n-        result = self.event_map[progress](self.game_state.get_state()[\"likability\"])\n+    def run_event(self, progress, likability):\n+        \"\"\"\n+        运行当前进度的剧情事件。\n \n-        # 更新游戏状态\n-        self.game_state.update(result.favor_change, result.dialogue_sequence)\n+        Args:\n+            progress (int): 当前游戏进度。\n+            likability (int): 当前角色好感度。\n \n-        return result\n+        Returns:\n+            EventResult: 事件结果，包含玩家选择的对话、好感度变化等信息。\n+        \"\"\"\n+        if progress == 1:\n+            return progress_1_event(likability)\n+        elif progress == 2:\n+            return progress_2_event(likability)\n+        elif progress == 3:\n+            return progress_3_event(likability)\n+        else:\n+            logger.error(f\"Invalid progress: {progress}\")\n+            return None\n"
+                }
+            ],
+            "date": 1741529657354,
+            "name": "Commit-0",
+            "content": "import logging\nfrom game_state import GameState\nfrom events.event_progress_1 import progress_1_event\nfrom events.event_progress_2 import progress_2_event\nfrom events.event_progress_3 import progress_3_event\n\nlogger = logging.getLogger(__name__)\n\nclass EventHandler:\n    \"\"\"管理所有事件调用\"\"\"\n    def __init__(self, game_state: GameState):\n        self.game_state = game_state\n        self.event_map = {\n            1: progress_1_event,\n            2: progress_2_event,\n            3: progress_3_event\n        }\n\n    def run_event(self):\n        \"\"\"运行当前进度的事件\"\"\"\n        progress = self.game_state.get_state()[\"progress\"]\n        if progress not in self.event_map:\n            logger.error(\"无效的进度: %s\", progress)\n            return\n        \n        result = self.event_map[progress](self.game_state.get_state()[\"likability\"])\n\n        # 更新游戏状态\n        self.game_state.update(result.favor_change, result.dialogue_sequence)\n\n        return result\n"
+        }
+    ]
+}

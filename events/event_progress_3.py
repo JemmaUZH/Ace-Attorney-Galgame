@@ -38,12 +38,12 @@ def sanitize_input(user_input: str, valid_choices: List[str]) -> str:
     return "invalid"
 
 
-def progress_3_event(favorability: int) -> EventResult:
+def progress_3_event(likability: int) -> EventResult:
     """
     处理第三个剧情进展的事件。
 
     Args:
-        favorability (int): 当前玩家的好感度。
+        likability (int): 当前玩家的好感度。
 
     Returns:
         EventResult: 记录本次事件的结果，包括玩家选择的选项、对话内容和好感度变化。
@@ -53,9 +53,9 @@ def progress_3_event(favorability: int) -> EventResult:
     dialogue_sequence = []
 
     # 玩家反驳的narrative（先追加到对话序列里作为旁白）
-    if favorability > 65:
+    if likability > 65:
         narrative = "「什么男朋友！我可没喜欢过这家伙！」"
-    elif favorability < 55:
+    elif likability < 55:
         narrative = "\n「男朋友？你满脑子只有情爱吗？我是他的律师，仅此而已。」"
     else:
         narrative = "\n「你误会了，他才不是我男朋友。」"
@@ -74,10 +74,10 @@ def progress_3_event(favorability: int) -> EventResult:
         dialogue_sequence.append({"speaker": "你", "line": player_line})
 
         # 根据好感度动态生成戈多反应
-        if favorability > 65:
+        if likability > 65:
             godot_line = "戈多微微一笑：「果然，你还是那个我认识的猫咪小姐。」"
             favor_change = +2
-        elif favorability < 55:
+        elif likability < 55:
             godot_line = "戈多冷笑：「现在才装冷静，有点晚了吧？」"
             favor_change = 0
         else:
@@ -93,10 +93,10 @@ def progress_3_event(favorability: int) -> EventResult:
     elif choice == "2":
         logger.info("Player chose to ask why Godot suddenly came back.")
         dialogue_sequence.append({"speaker": "你", "line": "你凝视着他，语气沉稳「你为什么突然回来？」"})
-        if favorability > 65:
+        if likability > 65:
             dialogue_sequence.append({"speaker": "戈多", "line": "戈多把咖啡一饮而尽：「有些真相，我只想从你口中听到。」"})
             favor_change = +1
-        elif favorability < 55:
+        elif likability < 55:
             dialogue_sequence.append({"speaker": "戈多", "line": "戈多：「呵。」"})
             favor_change = -1
         else:
@@ -123,7 +123,7 @@ def progress_3_event(favorability: int) -> EventResult:
         logger.warning(f"Unexpected choice '{choice}', defaulting to silence.")
         player_choice_text = "沉默"
         dialogue_sequence.append({"speaker": "你", "line": "你保持沉默，不做任何反应。"})
-        dialogue_sequence.append({"speaker": "戈多", "line": f"「沉默不代表无罪，{get_nickname(favorability)}。」"})
+        dialogue_sequence.append({"speaker": "戈多", "line": f"「沉默不代表无罪，{get_nickname(likability)}。」"})
         favor_change = 0
 
     return EventResult(player_choice_text, favor_change, dialogue_sequence)

@@ -38,12 +38,12 @@ def sanitize_input(user_input:str, valid_choices: list[str])-> str:
     return "invalid"
 
 
-def progress_2_event(favorability: int) -> EventResult:
+def progress_2_event(likability: int) -> EventResult:
     """
     处理第二个剧情进展的事件。
 
     Args:
-        favorability (int): 当前玩家的好感度。
+        likability (int): 当前玩家的好感度。
 
     Returns:
         EventResult: 记录本次事件的结果，包括玩家选择的选项、对话内容和好感度变化。
@@ -54,7 +54,7 @@ def progress_2_event(favorability: int) -> EventResult:
 
     # 开场narrative
     narrative = (
-        f"戈多：「无论如何，{get_nickname(favorability)}，"
+        f"戈多：「无论如何，{get_nickname(likability)}，"
         "现在你还是头疼一下你的被告人吧，我可真羡慕他，"
         "闯出这么大的祸还要你为他收拾。」"
     )
@@ -70,7 +70,7 @@ def progress_2_event(favorability: int) -> EventResult:
         dialogue_sequence.append({"speaker": "你", "line": "你摇了摇头：「戈多，我相信他是无罪的。」"})
 
         godot_line = (
-            f"戈多轻笑：「真是难得，{get_nickname(favorability)}，这么多年不见，你还是这么天真。」\n"
+            f"戈多轻笑：「真是难得，{get_nickname(likability)}，这么多年不见，你还是这么天真。」\n"
             "「你这么相信他，是因为律师的虚张声势，还是只是因为……」\n"
             "他身子前俯，话语却还带一丝玩味：「他是你的男朋友呢？」"
         )
@@ -85,7 +85,7 @@ def progress_2_event(favorability: int) -> EventResult:
         dialogue_sequence.append({"speaker": "你", "line": "你只是看了他一眼：「这件事和你无关，检察官先生，我只想保护他。」"})
 
         godot_line = (
-            f"戈多脸上的笑容消失了，「{get_nickname(favorability)}，我从地狱爬出来，就是为了今天，可以站在这里。」\n"
+            f"戈多脸上的笑容消失了，「{get_nickname(likability)}，我从地狱爬出来，就是为了今天，可以站在这里。」\n"
             "虽然你看不到他脸上的表情，但你能感受到他在看着你。\n"
             "「怎么会与我无关呢……那就一会儿让我见识一下这个与你有关的男朋友吧。」"
         )

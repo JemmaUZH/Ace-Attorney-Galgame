@@ -38,19 +38,19 @@ def sanitize_input(user_input: str, valid_choices: List[str]) -> str:
     return "invalid"
 
 
-def progress_1_event(favorability: int) -> EventResult:
+def progress_1_event(likability: int) -> EventResult:
     """
     处理第一个剧情进展的事件。
 
     Args:
-        favorability (int): 当前玩家的好感度。
+        likability (int): 当前玩家的好感度。
 
     Returns:
         EventResult: 记录本次事件的结果，包括玩家选择的选项、对话内容和好感度变化。
     """
        
     
-    past_story = get_past_story(favorability) if favorability < 60 else None
+    past_story = get_past_story(likability) if likability < 60 else None
     choice = input("输入选项编号(1-3)：")
 
     if choice == "1":
@@ -59,7 +59,7 @@ def progress_1_event(favorability: int) -> EventResult:
             {"speaker": "你", "line": "你的脸上露出疑惑的神情：「这位先生，请问你是？」"},
             {"speaker": "戈多", "line": "戈多举起咖啡轻酌，「才五年过去，你已经把我给忘了吗？我是戈多，现任检察官。」"}
         ]
-        return EventResult("表示疑惑询问他是谁", 0, dialogue_sequence, past_story=get_past_story(favorability))
+        return EventResult("表示疑惑询问他是谁", 0, dialogue_sequence, past_story=get_past_story(likability))
 
     elif choice == "2":
         logger.info("Player chose to nod and smile politely.")

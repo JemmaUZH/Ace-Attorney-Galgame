@@ -12,7 +12,7 @@ character = {
 }
 
 # 全局好感度
-favorability = 60
+likability = 60
 
 # 存储剧情的对话日志列表
 dialogue = []
@@ -28,9 +28,9 @@ dialogue = []
 
 # 根据好感度动态生成称呼
 def get_nickname():
-    if favorability >= 60:
+    if likability >= 60:
         return "猫咪小姐"
-    elif favorability <= 40:
+    elif likability <= 40:
         return "女士"
     else:
         return "被告小姐"
@@ -75,7 +75,7 @@ def player_choice():
         handle_progress_3()
 
 def handle_progress_1():
-    global favorability, progress
+    global likability, progress
     player_choice_text = "未知选项"  # 默认初始化，防止漏掉
     reaction = ""
     favor_change = 0
@@ -118,17 +118,17 @@ def handle_progress_1():
         past_story_text = None
     
     #更新好感度和进度
-    favorability += favor_change
+    likability += favor_change
     progress += 1
     
     
     # 记录对话
     record_dialogue(player_choice_text, reaction, favor_change, past_story_text)
-    print(f"（隐藏好感度：{favorability})\n")
+    print(f"（隐藏好感度：{likability})\n")
     print("---------------------------------------------------------------")
     
 def handle_progress_2():
-    global favorability, progress
+    global likability, progress
     player_choice_text = "未知选项"  # 默认初始化，防止漏掉
     reaction = ""
     favor_change = 0
@@ -176,23 +176,23 @@ def handle_progress_2():
         past_story_text = None
     
     #更新好感度和进度
-    favorability += favor_change
+    likability += favor_change
     progress += 1
     
     record_dialogue(player_choice_text, reaction, favor_change, past_story_text)
-    print(f"（隐藏好感度：{favorability})\n")
+    print(f"（隐藏好感度：{likability})\n")
     print("---------------------------------------------------------------")
 
 def handle_progress_3():
-    global favorability, progress
+    global likability, progress
     player_choice_text = "未知选项"  # 默认初始化，防止漏掉
     reaction = ""
     favor_change = 0
     past_story_text = None
     
-    if favorability > 65:
+    if likability > 65:
         print("「什么男朋友！我可没喜欢过这家伙！」")
-    elif favorability < 55:
+    elif likability < 55:
         print("\n「男朋友？你满脑子只有情爱吗？我是他的律师，仅此而已。」")
     else:
         print("\n「你误会了，他才不是我男朋友。」")
@@ -208,11 +208,11 @@ def handle_progress_3():
     if choice == "1":
         player_choice_text = "冷静分析证据"
         print("\n你抽出案件的文案，给戈多看并分析。")
-        if favorability > 65:
+        if likability > 65:
             reaction = f"{character['name']}微微一笑：「果然，你还是那个我认识的猫咪小姐。」"
             favor_change = +2
             key_note = "玩家主动分析证据，态度理性"
-        elif favorability < 55:
+        elif likability < 55:
             reaction = f"{character['name']}冷笑：「现在才装冷静，有点晚了吧？」"
             favor_change = 0
             key_note = "玩家被动分析证据，缺乏信任感"
@@ -223,11 +223,11 @@ def handle_progress_3():
     
     elif choice == "2":
         player_choice_text = "质问戈多的执着"
-        if favorability > 65:
+        if likability > 65:
             reaction = f"{character['name']}把咖啡一饮而尽：「有些真相，我只想从你口中听到。」"
             favor_change = +1
             key_note = "玩家询问戈多，戈多坦白动机"
-        elif favorability < 55:
+        elif likability < 55:
             reaction = f"{character['name']}：「呵。」"
             favor_change = -1
             key_note = "玩家询问失败，戈多态度强硬"
@@ -253,13 +253,13 @@ def handle_progress_3():
         key_note = "玩家保持沉默，戈多态度难测"
     
     #更新好感度和进度
-    favorability += favor_change
+    likability += favor_change
     progress += 1
     
     # 输出对话和反应
     print(f"\n{player_choice_text}\n")
     print(f"\n{reaction}\n")
-    print(f"（隐藏好感度：{favorability}）\n")
+    print(f"（隐藏好感度：{likability}）\n")
 
     # 记录对话
     record_dialogue(player_choice_text, reaction, favor_change, key_note)
@@ -274,7 +274,7 @@ def past_story():
         "「那是五年前……你还记得那场离奇的案件吗？」",
         "「无名尸体、消失的证据、以及……你最后留下的那句‘异议’，我可一直记得。」"
     ]
-    if favorability > 50:
+    if likability > 50:
         parts.extend([
             "他抬起眼，微微一笑，眼底似乎透出一丝怀念。",
             "「说实话……再次见到你，我其实有点开心。」",
@@ -296,7 +296,7 @@ def print_dialogue():
     print("\n【对话记录】")
     for log in dialogue:
         print(log)
-    print(f"（最终好感度：{favorability}）\n")
+    print(f"（最终好感度：{likability}）\n")
 
 def main():
     global progress

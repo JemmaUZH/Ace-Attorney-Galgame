@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1741256748536,
@@ -11,28 +11,32 @@
                 },
                 {
                     "date": 1741270817287,
-                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n from config import character, initial_favorability\n+from mange import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n from config import character, initial_likability\n+from mange import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
                 },
                 {
                     "date": 1741270826179,
-                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n from config import character, initial_favorability\n-from mange import StoryManager\n+from manger import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n from config import character, initial_likability\n-from mange import StoryManager\n+from manger import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
                 },
                 {
                     "date": 1741270837266,
-                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n from config import character, initial_favorability\n-from manger import StoryManager\n+from story_manger import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n from config import character, initial_likability\n-from manger import StoryManager\n+from story_manger import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
                 },
                 {
                     "date": 1741272556832,
-                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n+\n from config import character, initial_favorability\n-from story_manger import StoryManager\n+from story_manager import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n+\n from config import character, initial_likability\n-from story_manger import StoryManager\n+from story_manager import StoryManager\n \n def main():\n     manager = StoryManager()\n     manager.start_story()\n"
                 },
                 {
                     "date": 1741474462171,
-                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-\n+import logging\n from config import character, initial_favorability\n from story_manager import StoryManager\n \n def main():\n"
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-\n+import logging\n from config import character, initial_likability\n from story_manager import StoryManager\n \n def main():\n"
+                },
+                {
+                    "date": 1741530461190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,4 @@\n-import logging\n-from config import character, initial_likability\n from story_manager import StoryManager\n \n def main():\n     manager = StoryManager()\n"
                 }
             ],
             "date": 1741256748536,
             "name": "Commit-0",
-            "content": "from config import character, initial_favorability\n\ndef main():\n    manager = StoryManager()\n    manager.start_story()\n    \nif __name__ == \"__main__\":\n    main()\n"
+            "content": "from config import character, initial_likability\n\ndef main():\n    manager = StoryManager()\n    manager.start_story()\n    \nif __name__ == \"__main__\":\n    main()\n"
         }
     ]
 }

@@ -1,0 +1,34 @@
+{
+    "sourceFile": "game_state.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1741529640804,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741530358875,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,21 +1,49 @@\n+from config import character, initial_likability\n from save_load import save_game, load_game\n \n class GameState:\n     \"\"\"管理游戏状态，负责存取数据\"\"\"\n     def __init__(self):\n+        self.character = character\n+        self.likability = initial_likability\n+        self.progress = 1\n+        \n+    \n+\n+    def introduce_character(self):\n+        \"\"\"\n+        介绍人物，打印人物档案和开场白。\n+        \"\"\"\n+        print(\"---------------------------------------------------------------\")\n+        print(\"【人物档案】\\n\")\n+        for key, value in self.character.items():\n+            print(f\"{key}：{value}\")\n+        print(\"\\n---------------------------------------------------------------\\n\")\n+\n+        print(\"「猫咪小姐，好久不见。」\\n\")\n+        print(f\"{self.character['姓名']}检察官微微一笑，目光却如同探针般刺入你的内心。\\n\")\n         self.state = load_game() or {\n             \"likability\": 60,\n             \"progress\": 1,\n             \"log\": []\n         }\n+        \n+        print(\"---------------------------------------------------------------\")\n+        print(\"【选项】\")\n+        print(\"1. 表示疑惑\")\n+        print(\"2. 点头微笑\")\n+        print(\"3. 直接反驳\")\n+        \n+    def update_state(self, result):\n+        \"\"\"\n+        更新游戏状态，包括好感度和进度。\n \n-    def update(self, favor_change, new_log, progress_increment=1):\n-        \"\"\"更新游戏状态\"\"\"\n-        self.state[\"likability\"] += favor_change\n-        self.state[\"progress\"] += progress_increment\n-        self.state[\"log\"].extend(new_log)\n-        save_game(self.state)  # 保存游戏\n+        Args:\n+            result (EventResult): 事件结果对象，包含好感度变化和进度推进。\n+        \"\"\"\n+        self.likability += result.favor_change\n+        self.progress += 1\n \n     def get_state(self):\n         \"\"\"获取当前状态\"\"\"\n         return self.state\n"
+                },
+                {
+                    "date": 1741530364299,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,8 +42,4 @@\n             result (EventResult): 事件结果对象，包含好感度变化和进度推进。\n         \"\"\"\n         self.likability += result.favor_change\n         self.progress += 1\n-\n-    def get_state(self):\n-        \"\"\"获取当前状态\"\"\"\n-        return self.state\n"
+                },
+                {
+                    "date": 1741530765925,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,14 +2,12 @@\n from save_load import save_game, load_game\n \n class GameState:\n     \"\"\"管理游戏状态，负责存取数据\"\"\"\n-    def __init__(self):\n+    def __init__(self, likability: int = 60):\n         self.character = character\n         self.likability = initial_likability\n         self.progress = 1\n-        \n-    \n \n     def introduce_character(self):\n         \"\"\"\n         介绍人物，打印人物档案和开场白。\n"
+                },
+                {
+                    "date": 1741530773056,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n from save_load import save_game, load_game\n \n class GameState:\n     \"\"\"管理游戏状态，负责存取数据\"\"\"\n-    def __init__(self, likability: int = 60):\n+    def __init__(self, initial_likability: int = 60):\n         self.character = character\n         self.likability = initial_likability\n         self.progress = 1\n \n"
+                }
+            ],
+            "date": 1741529640804,
+            "name": "Commit-0",
+            "content": "from save_load import save_game, load_game\n\nclass GameState:\n    \"\"\"管理游戏状态，负责存取数据\"\"\"\n    def __init__(self):\n        self.state = load_game() or {\n            \"likability\": 60,\n            \"progress\": 1,\n            \"log\": []\n        }\n\n    def update(self, favor_change, new_log, progress_increment=1):\n        \"\"\"更新游戏状态\"\"\"\n        self.state[\"likability\"] += favor_change\n        self.state[\"progress\"] += progress_increment\n        self.state[\"log\"].extend(new_log)\n        save_game(self.state)  # 保存游戏\n\n    def get_state(self):\n        \"\"\"获取当前状态\"\"\"\n        return self.state\n"
+        }
+    ]
+}

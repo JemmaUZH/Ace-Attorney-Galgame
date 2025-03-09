@@ -24,7 +24,7 @@ character = {
     "惯用招数": "用温柔的语气说出最让人窒息的话"
 }
 
-initial_favorability = 60
+initial_likability = 60
 progress = 1
 
 narration_notes = [

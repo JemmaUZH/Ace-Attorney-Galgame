@@ -25,10 +25,10 @@ def test_sanitize_input(user_input, valid_choices, expected):
     ],
 )
 def test_progress_2_event(choice, expected_choice, expected_favor_change):
-    favorability = 50  # 测试用默认值
+    likability = 50  # 测试用默认值
     nickname = "小猫咪"  # 假设 `get_nickname` 返回的值
     with patch("builtins.input", return_value=choice), patch("story_content.get_nickname", return_value=nickname):
-        result = progress_2_event(favorability)
+        result = progress_2_event(likability)
 
     assert isinstance(result, EventResult)
     assert result.player_choice == expected_choice

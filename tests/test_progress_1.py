@@ -25,16 +25,17 @@ def test_sanitize_input(user_input, valid_choices, expected):
     ],
 )
 def test_progress_1_event(choice, expected_choice, expected_favor_change):
-    favorability = 50  # 测试用默认值
+    likability = 50  # 测试用默认值
     past_story = "过去的故事内容"  # 假设 `get_past_story` 返回的内容
     with patch("builtins.input", return_value=choice), patch("story_content.get_past_story", return_value=past_story):
-        result = progress_1_event(favorability)
+        result = progress_1_event(likability)
 
     assert isinstance(result, EventResult)
     assert result.player_choice == expected_choice
     assert result.favor_change == expected_favor_change
 
-    if favorability < 60:
+    if likability < 60:
         assert result.past_story == past_story
     else:
         assert result.past_story is None
+

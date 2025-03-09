@@ -16,3 +16,26 @@
 2025-03-09 13:24:12 - INFO - Player chose to believe in the defendant's innocence.
 2025-03-09 13:24:22 - INFO - Player chose to ask why Godot suddenly came back.
 2025-03-09 13:24:22 - INFO - Story ended.
+2025-03-09 15:28:23 - INFO - Story Manager initialized.
+2025-03-09 15:28:23 - INFO - Story started.
+2025-03-09 15:28:25 - INFO - Player chose to express confusion and ask who he is.
+2025-03-09 15:29:19 - INFO - Story Manager initialized.
+2025-03-09 15:29:19 - INFO - Story started.
+2025-03-09 15:29:21 - INFO - Player chose to express confusion and ask who he is.
+2025-03-09 15:29:21 - INFO - 戈多：「无论如何，猫咪小姐，现在你还是头疼一下你的被告人吧，我可真羡慕他，闯出这么大的祸还要你为他收拾。」
+2025-03-09 15:29:23 - INFO - Player chose to believe in the defendant's innocence.
+2025-03-09 15:29:24 - INFO - Player chose to analyze the evidence calmly.
+2025-03-09 15:33:01 - INFO - Story Manager initialized.
+2025-03-09 15:33:01 - INFO - Story started.
+2025-03-09 15:33:02 - INFO - Player chose to express confusion and ask who he is.
+2025-03-09 15:33:02 - INFO - 戈多：「无论如何，猫咪小姐，现在你还是头疼一下你的被告人吧，我可真羡慕他，闯出这么大的祸还要你为他收拾。」
+2025-03-09 15:33:03 - INFO - Player chose to believe in the defendant's innocence.
+2025-03-09 15:33:04 - INFO - Player chose to analyze the evidence calmly.
+2025-03-09 15:33:04 - INFO - Story ended.
+2025-03-09 15:39:03 - INFO - Story Manager initialized.
+2025-03-09 15:39:03 - INFO - Story started.
+2025-03-09 15:39:06 - INFO - Player chose to nod and smile politely.
+2025-03-09 15:39:06 - INFO - 戈多：「无论如何，猫咪小姐，现在你还是头疼一下你的被告人吧，我可真羡慕他，闯出这么大的祸还要你为他收拾。」
+2025-03-09 15:39:08 - INFO - Player chose to say 'This has nothing to do with you'.
+2025-03-09 15:39:11 - INFO - Player chose to firmly defend the client and directly counterattack.
+2025-03-09 15:39:11 - INFO - Story ended.

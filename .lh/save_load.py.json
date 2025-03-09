@@ -1,0 +1,18 @@
+{
+    "sourceFile": "save_load.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1741529604985,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1741529604985,
+            "name": "Commit-0",
+            "content": "import json\nimport os\n\nSAVE_FILE = \"save_data.json\"\n\ndef save_game(state):\n    \"\"\"保存游戏进度\"\"\"\n    with open(SAVE_FILE, \"w\", encoding=\"utf-8\") as f:\n        json.dump(state, f, indent=4, ensure_ascii=False)\n\ndef load_game():\n    \"\"\"加载游戏存档\"\"\"\n    if not os.path.exists(SAVE_FILE):\n        return None\n    with open(SAVE_FILE, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n"
+        }
+    ]
+}
