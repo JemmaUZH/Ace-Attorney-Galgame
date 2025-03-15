@@ -4,16 +4,23 @@ from story_content import get_past_story
 
 logger = logging.getLogger(__name__)
 
+
+    
 class EventResult:
     """
     事件结果类，存储玩家选择的选项、对话内容、好感度变化和过去的故事。
-    
+
     Attributes:
-        player_choice (str): 玩家选择的文本描述。
-        favor_change (int): 选项对好感度的影响。
-        dialogue_sequence (List[Dict[str, str]]): 记录游戏对话过程，每个元素是 {"speaker": str, "line": str}。
+        player_choice (str): 玩家选择的文本描述，如“点头微笑”。
+        favor_change (int): 选项对好感度的影响，正数增加，负数减少。
+        dialogue_sequence (list[dict]): 记录游戏对话过程，每个元素是 {"speaker": str, "line": str}。
         past_story (Optional[str]): 过去故事内容，默认为 None。
-    """   
+
+    Methods:
+        __init__(self, player_choice: str, favor_change: int, dialogue_sequence: List[dict[str, str]], past_story: Optional[str] = None)
+            初始化 EventResult 类，存储游戏对话和状态变化信息。
+    """
+
     def __init__(self, player_choice: str, favor_change: int, dialogue_sequence: List[dict[str, str]], past_story: Optional[str] = None):
         self.player_choice = player_choice
         self.dialogue_sequence = dialogue_sequence
@@ -32,7 +39,7 @@ def sanitize_input(user_input: str, valid_choices: List[str]) -> str:
         str: 经过处理后的选项。如果输入无效，返回 "invalid"。
     """
     user_input = user_input.strip()  # 去除空格
-    if user_input.isdigit() and user_input in valid_choices:
+    if user_input.isdigit() and user_input.strip() in valid_choices: 
         return user_input
     logger.warning(f"无效输入: {user_input}")
     return "invalid"
@@ -50,8 +57,10 @@ def progress_1_event(likability: int) -> EventResult:
     """
        
     
-    past_story = get_past_story(likability) if likability < 60 else None
     choice = input("输入选项编号(1-3)：")
+    
+    past_story = None
+    dialogue_sequence = []
 
     if choice == "1":
         logger.info("Player chose to express confusion and ask who he is.")
@@ -59,6 +68,8 @@ def progress_1_event(likability: int) -> EventResult:
             {"speaker": "你", "line": "你的脸上露出疑惑的神情：「这位先生，请问你是？」"},
             {"speaker": "戈多", "line": "戈多举起咖啡轻酌，「才五年过去，你已经把我给忘了吗？我是戈多，现任检察官。」"}
         ]
+        # **在 dialogue_sequence 结束后才触发 past_story**
+        past_story = get_past_story(likability)
         return EventResult("表示疑惑询问他是谁", 0, dialogue_sequence, past_story=get_past_story(likability))
 
     elif choice == "2":

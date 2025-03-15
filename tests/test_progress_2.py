@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from your_module_name import EventResult, sanitize_input, progress_2_event  # 替换 your_module_name
+from events.event_progress_2 import EventResult, sanitize_input, progress_2_event 
 from story_content import get_nickname
 
 @pytest.mark.parametrize(

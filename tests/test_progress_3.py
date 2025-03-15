@@ -1,5 +1,7 @@
 import pytest
-from events.progress_3_event import progress_3_event, EventResult
+from unittest.mock import patch
+from events.event_progress_3 import EventResult, sanitize_input, progress_3_event  
+from story_content import get_nickname
 
 @pytest.mark.parametrize("likability, expected_choice, expected_favor_change", [
     (70, "冷静分析证据", 2),   # 高好感度 → +2

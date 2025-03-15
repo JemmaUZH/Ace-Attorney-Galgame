@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1741522841759,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741541007199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,10 @@\n import pytest\n from unittest.mock import patch\n-from your_module_name import EventResult, sanitize_input, progress_1_event  # 替换 your_module_name\n+from events.event_progress_1 import EventResult, sanitize_input, progress_1_event\n from story_content import get_past_story\n \n+\n @pytest.mark.parametrize(\n     \"user_input, valid_choices, expected\",\n     [\n         (\"1\", [\"1\", \"2\", \"3\"], \"1\"),\n@@ -37,4 +38,5 @@\n     if likability < 60:\n         assert result.past_story == past_story\n     else:\n         assert result.past_story is None\n+\n"
+                },
+                {
+                    "date": 1741541696316,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,42 @@\n+import pytest\n+from unittest.mock import patch\n+from events.event_progress_1 import EventResult, sanitize_input, progress_1_event\n+from story_content import get_past_story\n+\n+\n+@pytest.mark.parametrize(\n+    \"user_input, valid_choices, expected\",\n+    [\n+        (\"1\", [\"1\", \"2\", \"3\"], \"1\"),\n+        (\" 2 \", [\"1\", \"2\", \"3\"], \"2\"),  # 测试去除空格\n+        (\"4\", [\"1\", \"2\", \"3\"], \"invalid\"),  # 无效选项\n+        (\"hello\", [\"1\", \"2\", \"3\"], \"invalid\"),  # 非数字输入\n+    ],\n+)\n+def test_sanitize_input(user_input, valid_choices, expected):\n+    assert sanitize_input(user_input, valid_choices) == expected\n+\n+@pytest.mark.parametrize(\n+    \"choice, expected_choice, expected_favor_change\",\n+    [\n+        (\"1\", \"表示疑惑询问他是谁\", 0),\n+        (\"2\", \"点头微笑\", 2),\n+        (\"3\", \"直接反驳\", -3),\n+        (\"x\", \"沉默\", 0),\n+    ],\n+)\n+def test_progress_1_event(choice, expected_choice, expected_favor_change):\n+    likability = 50  # 测试用默认值\n+    past_story = \"过去的故事内容\"  # 假设 `get_past_story` 返回的内容\n+    with patch(\"builtins.input\", return_value=choice), patch(\"story_content.get_past_story\", return_value=past_story):\n+        result = progress_1_event(likability)\n+\n+    assert isinstance(result, EventResult)\n+    assert result.player_choice == expected_choice\n+    assert result.favor_change == expected_favor_change\n+\n+    if likability < 60:\n+        assert result.past_story == past_story\n+    else:\n+        assert result.past_story is None\n+\n"
+                },
+                {
+                    "date": 1741678774732,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,46 +39,4 @@\n         assert result.past_story == past_story\n     else:\n         assert result.past_story is None\n \n-import pytest\n-from unittest.mock import patch\n-from events.event_progress_1 import EventResult, sanitize_input, progress_1_event\n-from story_content import get_past_story\n-\n-\n-@pytest.mark.parametrize(\n-    \"user_input, valid_choices, expected\",\n-    [\n-        (\"1\", [\"1\", \"2\", \"3\"], \"1\"),\n-        (\" 2 \", [\"1\", \"2\", \"3\"], \"2\"),  # 测试去除空格\n-        (\"4\", [\"1\", \"2\", \"3\"], \"invalid\"),  # 无效选项\n-        (\"hello\", [\"1\", \"2\", \"3\"], \"invalid\"),  # 非数字输入\n-    ],\n-)\n-def test_sanitize_input(user_input, valid_choices, expected):\n-    assert sanitize_input(user_input, valid_choices) == expected\n-\n-@pytest.mark.parametrize(\n-    \"choice, expected_choice, expected_favor_change\",\n-    [\n-        (\"1\", \"表示疑惑询问他是谁\", 0),\n-        (\"2\", \"点头微笑\", 2),\n-        (\"3\", \"直接反驳\", -3),\n-        (\"x\", \"沉默\", 0),\n-    ],\n-)\n-def test_progress_1_event(choice, expected_choice, expected_favor_change):\n-    likability = 50  # 测试用默认值\n-    past_story = \"过去的故事内容\"  # 假设 `get_past_story` 返回的内容\n-    with patch(\"builtins.input\", return_value=choice), patch(\"story_content.get_past_story\", return_value=past_story):\n-        result = progress_1_event(likability)\n-\n-    assert isinstance(result, EventResult)\n-    assert result.player_choice == expected_choice\n-    assert result.favor_change == expected_favor_change\n-\n-    if likability < 60:\n-        assert result.past_story == past_story\n-    else:\n-        assert result.past_story is None\n-\n"
                 }
             ],
             "date": 1741522841759,

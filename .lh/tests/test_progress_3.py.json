@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1741522743246,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741540973071,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,8 @@\n import pytest\n-from events.progress_3_event import progress_3_event, EventResult\n+from unittest.mock import patch\n+from events.event_progress_3 import EventResult, sanitize_input, progress_2_event  # 替换 your_module_name\n+from story_content import get_nickname\n \n @pytest.mark.parametrize(\"likability, expected_choice, expected_favor_change\", [\n     (70, \"冷静分析证据\", 2),   # 高好感度 → +2\n     (50, \"冷静分析证据\", 1),   # 中等好感度 → +1\n"
+                },
+                {
+                    "date": 1741541012052,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import pytest\n from unittest.mock import patch\n-from events.event_progress_3 import EventResult, sanitize_input, progress_2_event  # 替换 your_module_name\n+from events.event_progress_3 import EventResult, sanitize_input, progress_2_event  \n from story_content import get_nickname\n \n @pytest.mark.parametrize(\"likability, expected_choice, expected_favor_change\", [\n     (70, \"冷静分析证据\", 2),   # 高好感度 → +2\n"
+                },
+                {
+                    "date": 1741541128630,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import pytest\n from unittest.mock import patch\n-from events.event_progress_3 import EventResult, sanitize_input, progress_2_event  \n+from events.event_progress_3 import EventResult, sanitize_input, progress_3_event  \n from story_content import get_nickname\n \n @pytest.mark.parametrize(\"likability, expected_choice, expected_favor_change\", [\n     (70, \"冷静分析证据\", 2),   # 高好感度 → +2\n"
                 }
             ],
             "date": 1741522743246,

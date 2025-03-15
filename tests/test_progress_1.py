@@ -1,7 +1,8 @@
 import pytest
 from unittest.mock import patch
-from your_module_name import EventResult, sanitize_input, progress_1_event  # 替换 your_module_name
+from events.event_progress_1 import EventResult, sanitize_input, progress_1_event
 from story_content import get_past_story
+
 
 @pytest.mark.parametrize(
     "user_input, valid_choices, expected",
